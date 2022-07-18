@@ -23,15 +23,20 @@ namespace Aplicacao.Services
 
         public Cliente CriarCliente(CriarClienteDto criarClientDto)
         {
-            criarClientDto.Endereco.Id = Guid.NewGuid();
 
             Cliente cliente = new Cliente();
             cliente.Nome = criarClientDto.Nome;
             cliente.DataNascimento = criarClientDto.DataNascimento;
             cliente.Cpf = criarClientDto.Cpf;
             cliente.Telefone = criarClientDto.Telefone;
-            cliente.EnderecoId = criarClientDto.Endereco.Id;
-            cliente.Endereco = criarClientDto.Endereco;
+            cliente.EnderecoId = Guid.NewGuid();
+
+            cliente.Endereco = new Dominio.Entidade.Endereco();
+            cliente.Endereco.Logradouro = criarClientDto.Endereco.Logradouro;
+            cliente.Endereco.Numero = criarClientDto.Endereco.Numero;
+            cliente.Endereco.Cep = criarClientDto.Endereco.Cep;
+            cliente.Endereco.Cidade = criarClientDto.Endereco.Cidade;
+            cliente.Endereco.Estado = criarClientDto.Endereco.Estado;
 
             _context.Clientes.Add(cliente);
             _context.SaveChanges();
@@ -104,6 +109,37 @@ namespace Aplicacao.Services
             if (atualizarClienteDto.Telefone != null)
             {
                 cliente.Telefone = atualizarClienteDto.Telefone;
+            }
+
+            if (atualizarClienteDto.Endereco != null)
+            {
+                cliente.Endereco = new Dominio.Entidade.Endereco();
+                cliente.Endereco.Id = cliente.EnderecoId;
+
+                if (atualizarClienteDto.Endereco.Logradouro != null)
+                {
+                    cliente.Endereco.Logradouro = atualizarClienteDto.Endereco.Logradouro;
+                }
+
+                if (atualizarClienteDto.Endereco.Numero != null)
+                {
+                    cliente.Endereco.Numero = atualizarClienteDto.Endereco.Numero;
+                }
+
+                if (atualizarClienteDto.Endereco.Cep != null)
+                {
+                    cliente.Endereco.Cep = atualizarClienteDto.Endereco.Cep;
+                }
+
+                if (atualizarClienteDto.Endereco.Cidade != null)
+                {
+                    cliente.Endereco.Cidade = atualizarClienteDto.Endereco.Cidade;
+                }
+
+                if (atualizarClienteDto.Endereco.Estado != null)
+                {
+                    cliente.Endereco.Estado = atualizarClienteDto.Endereco.Estado;
+                }
             }
         }
     }

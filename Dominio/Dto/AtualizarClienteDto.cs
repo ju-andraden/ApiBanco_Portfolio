@@ -12,6 +12,6 @@ namespace Dominio.Dto
         public string? Nome { get; set; }
         public DateTime? DataNascimento { get; set; }
         public string? Telefone { get; set; }
-        //public Endereco Endereco { get; set; }
+        public EnderecoDto Endereco { get; set; }
     }
 }

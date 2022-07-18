@@ -24,7 +24,7 @@ namespace Aplicacao.Services
         {
             Conta conta = new Conta();
             conta.Numero = numero;
-
+            
             _context.Contas.Add(conta);
             _context.SaveChanges();
             return conta;
