@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Aplicacao.Services
 {
-    
+
     public class TransacaoService : ITransacaoService
     {
         private readonly ApiDbContext _context;
@@ -23,24 +23,42 @@ namespace Aplicacao.Services
 
         public Transacao CriarTransacao(CriarTransacaoDto criarTransacaoDto)
         {
-            //var style = NumberStyles.AllowDecimalPoint;
-            //var provider = new CultureInfo("pt-BR");
+            if (criarTransacaoDto.ContaId.Equals(Guid.Empty))
+            {
+                return null;
+            }
+
+            var existe = ValidarSeContaExiste(criarTransacaoDto.ContaId);
+
+            if (!existe)
+            {
+                return null;
+            }
 
             Transacao transacao = new Transacao();
+            transacao.ContaId = criarTransacaoDto.ContaId;
             transacao.TipoTransacao = criarTransacaoDto.TipoTransacao.ToString();
-            transacao.Descricao = criarTransacaoDto.Descricao;            
+            transacao.Descricao = criarTransacaoDto.Descricao;
             transacao.Valor = decimal.Round(criarTransacaoDto.Valor, 2, MidpointRounding.AwayFromZero);
-
-            //transacao.Valor = decimal.Parse(transacao.Valor.ToString().Replace(".", ","), style, provider);
 
             transacao.DataHora = DateTime.Now;
 
             _context.Transacoes.Add(transacao);
             _context.SaveChanges();
 
-            //Convert.ToDecimal(transacao.Valor.ToString("#.##0,00"));
-
             return transacao;
+        }
+
+        private bool ValidarSeContaExiste(Guid contaId)
+        {
+            var conta = _context.Contas.FirstOrDefault(conta => conta.Id.Equals(contaId));
+            
+            if (conta is null)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public List<Transacao> LerTransacoes()
@@ -62,6 +80,12 @@ namespace Aplicacao.Services
         {
             var transacao = _context.Transacoes.FirstOrDefault(transacao => transacao.Id.Equals(id));
             return transacao;
+        }
+
+        public List<Transacao> LerTransacoes(Guid id)
+        {
+            var listaTransacoes = _context.Transacoes.Where(transacao => transacao.ContaId == id).ToList();
+            return listaTransacoes;
         }
     }
 }

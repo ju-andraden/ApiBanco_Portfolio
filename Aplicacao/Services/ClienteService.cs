@@ -111,36 +111,14 @@ namespace Aplicacao.Services
                 cliente.Telefone = atualizarClienteDto.Telefone;
             }
 
-            if (atualizarClienteDto.Endereco != null)
-            {
-                cliente.Endereco = new Dominio.Entidade.Endereco();
-                cliente.Endereco.Id = cliente.EnderecoId;
+            cliente.Endereco = new Dominio.Entidade.Endereco();
+            cliente.Endereco.Id = cliente.EnderecoId;
 
-                if (atualizarClienteDto.Endereco.Logradouro != null)
-                {
-                    cliente.Endereco.Logradouro = atualizarClienteDto.Endereco.Logradouro;
-                }
-
-                if (atualizarClienteDto.Endereco.Numero != null)
-                {
-                    cliente.Endereco.Numero = atualizarClienteDto.Endereco.Numero;
-                }
-
-                if (atualizarClienteDto.Endereco.Cep != null)
-                {
-                    cliente.Endereco.Cep = atualizarClienteDto.Endereco.Cep;
-                }
-
-                if (atualizarClienteDto.Endereco.Cidade != null)
-                {
-                    cliente.Endereco.Cidade = atualizarClienteDto.Endereco.Cidade;
-                }
-
-                if (atualizarClienteDto.Endereco.Estado != null)
-                {
-                    cliente.Endereco.Estado = atualizarClienteDto.Endereco.Estado;
-                }
-            }
+            cliente.Endereco.Logradouro = atualizarClienteDto.Endereco.Logradouro;
+            cliente.Endereco.Numero = atualizarClienteDto.Endereco.Numero;
+            cliente.Endereco.Cep = atualizarClienteDto.Endereco.Cep;
+            cliente.Endereco.Cidade = atualizarClienteDto.Endereco.Cidade;
+            cliente.Endereco.Estado = atualizarClienteDto.Endereco.Estado;
         }
     }
 }

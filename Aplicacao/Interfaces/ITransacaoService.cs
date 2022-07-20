@@ -12,10 +12,6 @@ namespace Aplicacao.Interfaces
         public Transacao CriarTransacao(CriarTransacaoDto criarTransacaoDto);
         public Transacao LerTransacao(Guid id);        
         public List<Transacao> LerTransacoes();
-
-        /*
-        public Transacao AtualizarCliente();
-        public Transacao DeletarTransacao(Guid id);
-        */
+        public List<Transacao> LerTransacoes(Guid id);
     }
 }

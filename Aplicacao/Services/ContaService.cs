@@ -15,9 +15,12 @@ namespace Aplicacao.Services
     {
         private readonly ApiDbContext _context;
 
-        public ContaService(ApiDbContext context)
+        private readonly ITransacaoService _transacaoService;
+
+        public ContaService(ApiDbContext context, ITransacaoService transacaoService)
         {
             _context = context;
+            _transacaoService = transacaoService;
         }
 
         public Conta Criar(string numero)
@@ -62,10 +65,6 @@ namespace Aplicacao.Services
 
         public Conta Atualizar(string numeroConta, Conta novosDados)
         {
-            //atualizando um elemento -> encontrar o elemento na lista, modificar as propriedades e retornar o obj
-            //encontrar
-            //modificar
-            //retornar o obj
             var conta = BuscarContaPeloNumero(numeroConta);
             if (conta is null)
             {
@@ -79,9 +78,6 @@ namespace Aplicacao.Services
 
         public string Deletar(string numero)
         {
-            //obj conta ou nulo
-            //se a conta existir -> remove
-            //se a conta não existir -> mensagem de conta não encontrada
             var conta = BuscarContaPeloNumero(numero);
             if (conta is null)
             {
@@ -92,15 +88,15 @@ namespace Aplicacao.Services
             return Mensagens.RemoverConta;
         }
 
-        /// <summary>
-        /// caso encontre a conta, retornará a conta
-        /// caso não encontre a conta, retornará nulo
-        /// </summary>
-        /// <param name="numero"></param>
-        /// <returns></returns>
         private Conta BuscarContaPeloNumero(string numero)
         {
             var conta = _context.Contas.FirstOrDefault(conta => conta.Numero.Equals(numero));
+
+            if (conta != null)
+            {
+               conta.Transacoes = _transacaoService.LerTransacoes(conta.Id);
+            }
+
             return conta;
         }
     }

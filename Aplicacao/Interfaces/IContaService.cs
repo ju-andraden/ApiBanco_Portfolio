@@ -9,11 +9,10 @@ namespace Aplicacao.Interfaces
 {
     public interface IContaService
     {
-        
         public Conta Criar(string numero);
         public Conta Ler(string numero);
         public List<Conta> Ler();
         public Conta Atualizar(string numeroConta, Conta novosDados);
-        public string Deletar(string numero);
+        public string Deletar(string numero); 
     }
 }
