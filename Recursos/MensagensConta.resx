@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ClienteNaoEncontrado" xml:space="preserve">
-    <value>O cliente não foi encontrado.</value>
-  </data>
   <data name="ContaCadastrada" xml:space="preserve">
     <value>Cadastro da conta {0} criado com sucesso.</value>
   </data>
@@ -127,24 +124,9 @@
     <value>Conta existente.</value>
   </data>
   <data name="ContaNaoEncontrada" xml:space="preserve">
-    <value>A conta não foi encontrada.</value>
-  </data>
-  <data name="DadosAtualizados" xml:space="preserve">
-    <value>Dados atualizados com sucesso, novo número da conta {0}.</value>
-  </data>
-  <data name="Deposito" xml:space="preserve">
-    <value>Foi depositado R$ {0}.</value>
-  </data>
-  <data name="LeituraDeDados" xml:space="preserve">
-    <value>Dados lidos com sucesso, conta {0}.</value>
-  </data>
-  <data name="RemoverCliente" xml:space="preserve">
-    <value>Cliente removido com sucesso.</value>
+    <value>Conta não encontrada.</value>
   </data>
   <data name="RemoverConta" xml:space="preserve">
     <value>Conta removida com sucesso.</value>
-  </data>
-  <data name="Saque" xml:space="preserve">
-    <value>Saque realizado no valor de R$ {0}.</value>
   </data>
 </root>

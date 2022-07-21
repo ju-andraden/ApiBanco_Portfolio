@@ -1,4 +1,5 @@
-﻿using Aplicacao.Interfaces;
+﻿using _4_Recursos;
+using Aplicacao.Interfaces;
 using Dominio.Dto;
 using Dominio.Enum;
 using Infraestrutura.DataBase;
@@ -38,27 +39,15 @@ namespace Aplicacao.Services
             Transacao transacao = new Transacao();
             transacao.ContaId = criarTransacaoDto.ContaId;
             transacao.TipoTransacao = criarTransacaoDto.TipoTransacao.ToString();
-            transacao.Descricao = criarTransacaoDto.Descricao;
             transacao.Valor = decimal.Round(criarTransacaoDto.Valor, 2, MidpointRounding.AwayFromZero);
 
             transacao.DataHora = DateTime.Now;
+            MensagemTipoTransacao(criarTransacaoDto, transacao);
 
             _context.Transacoes.Add(transacao);
             _context.SaveChanges();
 
             return transacao;
-        }
-
-        private bool ValidarSeContaExiste(Guid contaId)
-        {
-            var conta = _context.Contas.FirstOrDefault(conta => conta.Id.Equals(contaId));
-            
-            if (conta is null)
-            {
-                return false;
-            }
-
-            return true;
         }
 
         public List<Transacao> LerTransacoes()
@@ -69,6 +58,7 @@ namespace Aplicacao.Services
         public Transacao LerTransacao(Guid id)
         {
             var transacao = BuscarTransacaoPeloId(id);
+
             if (transacao is null)
             {
                 return null;
@@ -76,16 +66,54 @@ namespace Aplicacao.Services
             return transacao;
         }
 
-        private Transacao BuscarTransacaoPeloId(Guid id)
-        {
-            var transacao = _context.Transacoes.FirstOrDefault(transacao => transacao.Id.Equals(id));
-            return transacao;
-        }
-
         public List<Transacao> LerTransacoes(Guid id)
         {
             var listaTransacoes = _context.Transacoes.Where(transacao => transacao.ContaId == id).ToList();
+
             return listaTransacoes;
+        }
+
+        private Transacao BuscarTransacaoPeloId(Guid id)
+        {
+            var transacao = _context.Transacoes.FirstOrDefault(transacao => transacao.Id.Equals(id));
+
+            return transacao;
+        }
+        private bool ValidarSeContaExiste(Guid contaId)
+        {
+            var conta = _context.Contas.FirstOrDefault(conta => conta.Id.Equals(contaId));
+
+            if (conta is null)
+            {
+                return false;
+            }
+
+            return true;
+        }
+        private void MensagemTipoTransacao(CriarTransacaoDto criarTransacaoDto, Transacao transacao)
+        {
+            var tipoTransacao = (int)criarTransacaoDto.TipoTransacao;
+
+            switch (tipoTransacao)
+            {
+                case 0:
+                    transacao.Descricao = MensagensTransacao.TedRealizado;
+                    break;
+                case 1:
+                    transacao.Descricao = MensagensTransacao.DocRealizado;
+                    break;
+                case 2:
+                    transacao.Descricao = MensagensTransacao.PixRealizado;
+                    break;
+                case 3:
+                    transacao.Descricao = MensagensTransacao.DepositoRealizado;
+                    break;
+                case 4:
+                    transacao.Descricao = MensagensTransacao.SaqueRealizado;
+                    break;
+                default:
+                    throw new Exception(MensagensTransacao.TransacaoInvalida);
+            }
         }
     }
 }

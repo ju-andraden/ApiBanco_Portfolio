@@ -16,9 +16,12 @@ namespace Aplicacao.Services
     {
         private readonly ApiDbContext _context;
 
-        public ClienteService(ApiDbContext context)
+        private readonly IContaService _contaService;
+
+        public ClienteService(ApiDbContext context, IContaService contaService)
         {
             _context = context;
+            _contaService = contaService;
         }
 
         public Cliente CriarCliente(CriarClienteDto criarClientDto)
@@ -74,10 +77,11 @@ namespace Aplicacao.Services
 
             _context.Entry(cliente).State = EntityState.Modified;
             _context.SaveChanges();
+
             return cliente;
         }
 
-        public string DeletarCliente(string cpf)
+        /*public string DeletarCliente(string cpf)
         {
             var cliente = BuscarClientePeloCpf(cpf);
             if (cliente is null)
@@ -86,14 +90,36 @@ namespace Aplicacao.Services
             }
             _context.Clientes.Remove(cliente);
             _context.SaveChanges();
-            return Mensagens.RemoverCliente;
+
+            return MensagensCliente.RemoverCliente;
+        }*/
+
+        public string DeletarCliente(string cpf)
+        {
+            var cliente = BuscarClientePeloCpf(cpf);
+
+            if (cliente.Contas.Any())
+            {
+                throw new Exception(MensagensCliente.RemoverClienteComConta);
+            }
+
+            _context.Clientes.Remove(cliente);
+            _context.SaveChanges();
+
+            return MensagensCliente.RemoverCliente;
         }
 
         private Cliente BuscarClientePeloCpf(string cpf)
         {
             var cliente = _context.Clientes.FirstOrDefault(cliente => cliente.Cpf.Equals(cpf));
+
+            if (cliente != null)
+            {
+                cliente.Contas = _contaService.Ler(cliente.Id);
+            }
             return cliente;
         }
+
         private void AtualizarClienteSemDadosNulos(Cliente cliente, AtualizarClienteDto atualizarClienteDto)
         {
             if (atualizarClienteDto.Nome != null)

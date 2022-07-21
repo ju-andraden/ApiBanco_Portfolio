@@ -22,6 +22,7 @@ namespace Apresentacao.Controllers
             try
             {
                 var clienteCriado = _clienteService.CriarCliente(criarClienteDto);
+
                 return Created($"/{clienteCriado.Id}", clienteCriado);
             }
 
@@ -31,7 +32,7 @@ namespace Apresentacao.Controllers
 
                 if (mensagem.StartsWith("Duplicate"))
                 {
-                    return BadRequest(Mensagens.ContaExistente);
+                    return BadRequest(MensagensCliente.ClienteExiste);
                 }
 
                 return BadRequest(mensagem);
@@ -42,6 +43,7 @@ namespace Apresentacao.Controllers
         public IActionResult LeiaClientes()
         {
             var leiaClientes = _clienteService.LerClientes();
+
             return Ok(leiaClientes);
         }
 
@@ -49,9 +51,10 @@ namespace Apresentacao.Controllers
         public IActionResult LeiaCliente(string cpf)
         {
             var leiaCliente = _clienteService.LerCliente(cpf);
+
             if (leiaCliente is null)
             {
-                return NotFound();
+                return NotFound(MensagensCliente.ClienteNaoEncontrado);
             }
             return Ok(leiaCliente);
         }
@@ -60,18 +63,35 @@ namespace Apresentacao.Controllers
         public IActionResult AtualizandoCliente(string cpf, [FromBody] AtualizarClienteDto atualizarClienteDto)
         {
             var atualizandoCliente = _clienteService.AtualizarCliente(cpf, atualizarClienteDto);
+
+            if (atualizandoCliente is null)
+            {
+                return NotFound(MensagensCliente.ClienteNaoEncontrado);
+            }
+
             return Ok(atualizandoCliente);
         }
 
         [HttpDelete("DeletarCliente")]
         public IActionResult DeletandoCliente(string cpf)
         {
-            var deletandoCliente = _clienteService.DeletarCliente(cpf);
-            if (deletandoCliente is null)
+            try
             {
-                return NotFound(Mensagens.ClienteNaoEncontrado);
+                var deletandoCliente = _clienteService.DeletarCliente(cpf);
+
+                if (deletandoCliente is null)
+                {
+                    return NotFound(MensagensCliente.ClienteNaoEncontrado);
+                }
+
+                return Ok(deletandoCliente);
             }
-            return Ok(deletandoCliente);
+
+            catch (Exception excecao)
+            {
+                return BadRequest(excecao.Message);
+            }
+            
         }
     }
 }

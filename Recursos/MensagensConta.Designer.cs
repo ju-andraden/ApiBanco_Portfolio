@@ -22,14 +22,14 @@ namespace _4_Recursos {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Mensagens {
+    public class MensagensConta {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Mensagens() {
+        internal MensagensConta() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace _4_Recursos {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("4-Recursos.Mensagens", typeof(Mensagens).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("4-Recursos.MensagensConta", typeof(MensagensConta).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,15 +57,6 @@ namespace _4_Recursos {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to O cliente não foi encontrado..
-        /// </summary>
-        public static string ClienteNaoEncontrado {
-            get {
-                return ResourceManager.GetString("ClienteNaoEncontrado", resourceCulture);
             }
         }
         
@@ -88,47 +79,11 @@ namespace _4_Recursos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A conta não foi encontrada..
+        ///   Looks up a localized string similar to Conta não encontrada..
         /// </summary>
         public static string ContaNaoEncontrada {
             get {
                 return ResourceManager.GetString("ContaNaoEncontrada", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Dados atualizados com sucesso, novo número da conta {0}..
-        /// </summary>
-        public static string DadosAtualizados {
-            get {
-                return ResourceManager.GetString("DadosAtualizados", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Foi depositado R$ {0}..
-        /// </summary>
-        public static string Deposito {
-            get {
-                return ResourceManager.GetString("Deposito", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Dados lidos com sucesso, conta {0}..
-        /// </summary>
-        public static string LeituraDeDados {
-            get {
-                return ResourceManager.GetString("LeituraDeDados", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cliente removido com sucesso..
-        /// </summary>
-        public static string RemoverCliente {
-            get {
-                return ResourceManager.GetString("RemoverCliente", resourceCulture);
             }
         }
         
@@ -138,15 +93,6 @@ namespace _4_Recursos {
         public static string RemoverConta {
             get {
                 return ResourceManager.GetString("RemoverConta", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Saque realizado no valor de R$ {0}..
-        /// </summary>
-        public static string Saque {
-            get {
-                return ResourceManager.GetString("Saque", resourceCulture);
             }
         }
     }

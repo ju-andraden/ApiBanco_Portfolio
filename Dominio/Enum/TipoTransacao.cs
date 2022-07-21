@@ -11,7 +11,6 @@ namespace Dominio.Enum
         Ted, 
         Doc,
         Pix,
-        Transferencia,
         Deposito,
         Saque
     }

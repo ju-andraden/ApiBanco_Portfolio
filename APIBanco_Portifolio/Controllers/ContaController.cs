@@ -15,22 +15,32 @@ namespace Apresentacao.Controllers
         {
             _contaService = contaService;
         }
-        
+
         [HttpPost("CriarConta")]
-        public IActionResult Criado(string numero)
+        public IActionResult Criado([FromBody] CriarContaDto criarContaDto)
         {
-            var resultado = _contaService.Criar(numero);
-            if (resultado is null)
+            try
             {
-                return Unauthorized();
+                var contaCriada = _contaService.Criar(criarContaDto);
+
+                if (contaCriada is null)
+                {
+                    return Unauthorized(MensagensCliente.ClienteNaoEncontrado);
+                }
+                return Created($"/{criarContaDto.ClienteId}", contaCriada);
             }
-            return Created($"/{numero}", resultado);
+
+            catch (Exception excecao)
+            {
+                return BadRequest(excecao.Message);
+            }
         }
 
         [HttpGet("BuscarTodasAsContas")]
         public IActionResult Leia()
         {
             var resultado = _contaService.Ler();
+
             return Ok(resultado);
         }
 
@@ -38,9 +48,10 @@ namespace Apresentacao.Controllers
         public IActionResult Leia(string numero)
         {
             var resultado = _contaService.Ler(numero);
+
             if (resultado is null)
             {
-                return NotFound();
+                return NotFound(MensagensConta.ContaNaoEncontrada);
             }
             return Ok(resultado);
         }
@@ -48,17 +59,24 @@ namespace Apresentacao.Controllers
         [HttpPut("AtualizarConta")]
         public IActionResult Atualizado(string numeroConta, [FromBody] Conta novosDados)
         {
-            var resultado = _contaService.Atualizar(numeroConta, novosDados);
-            return Ok(resultado);
+            var atualizandoConta = _contaService.Atualizar(numeroConta, novosDados);
+
+            if (atualizandoConta is null)
+            {
+                return BadRequest(MensagensConta.ContaNaoEncontrada);
+            }
+
+            return Ok(atualizandoConta);
         }
 
         [HttpDelete("DeletarConta")]
         public IActionResult Deletando(string numero)
         {
             var resultado = _contaService.Deletar(numero);
+
             if (resultado is null)
             {
-                return NotFound(Mensagens.ContaNaoEncontrada);
+                return NotFound(MensagensConta.ContaNaoEncontrada);
             }
             return Ok(resultado);
         }

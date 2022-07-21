@@ -8,17 +8,35 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="Mensagens.Designer.cs">
+    <Compile Update="MensagensTransacao.Designer.cs">
+      <DependentUpon>MensagensTransacao.resx</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Mensagens.resx</DependentUpon>
+    </Compile>
+    <Compile Update="MensagensCliente.Designer.cs">
+      <DependentUpon>MensagensCliente.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="MensagensConta.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MensagensConta.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Mensagens.resx">
+    <EmbeddedResource Update="MensagensTransacao.resx">
+      <LastGenOutput>MensagensTransacao.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Mensagens.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="MensagensCliente.resx">
+      <LastGenOutput>MensagensCliente.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="MensagensConta.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MensagensConta.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

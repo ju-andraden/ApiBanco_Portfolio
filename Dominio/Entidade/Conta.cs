@@ -12,9 +12,9 @@ namespace Dominio.Dto
     {
         [Key]
         public Guid Id { get; set; }
+        public Guid? ClienteId { get; set; }
         public string Numero { get; set; }
         public string? Agencia { get; set; }
-        public Guid? ClienteId { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public List<Transacao>? Transacoes { get; set; }
