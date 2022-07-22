@@ -81,22 +81,14 @@ namespace Aplicacao.Services
             return cliente;
         }
 
-        /*public string DeletarCliente(string cpf)
+        public string DeletarCliente(string cpf)
         {
             var cliente = BuscarClientePeloCpf(cpf);
+
             if (cliente is null)
             {
                 return null;
             }
-            _context.Clientes.Remove(cliente);
-            _context.SaveChanges();
-
-            return MensagensCliente.RemoverCliente;
-        }*/
-
-        public string DeletarCliente(string cpf)
-        {
-            var cliente = BuscarClientePeloCpf(cpf);
 
             if (cliente.Contas.Any())
             {

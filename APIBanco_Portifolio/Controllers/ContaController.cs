@@ -32,7 +32,7 @@ namespace Apresentacao.Controllers
 
             catch (Exception excecao)
             {
-                return BadRequest(excecao.Message);
+                return BadRequest(MensagensConta.ContaExistente);
             }
         }
 
