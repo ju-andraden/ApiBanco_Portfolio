@@ -22,14 +22,14 @@ namespace _4_Recursos {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class MensagensConta {
+    public class Mensagens {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal MensagensConta() {
+        internal Mensagens() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace _4_Recursos {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("4-Recursos.MensagensConta", typeof(MensagensConta).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("4-Recursos.Mensagens", typeof(Mensagens).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,24 @@ namespace _4_Recursos {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cliente possui cadastro..
+        /// </summary>
+        public static string ClienteExiste {
+            get {
+                return ResourceManager.GetString("ClienteExiste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cliente não encontrado..
+        /// </summary>
+        public static string ClienteNaoEncontrado {
+            get {
+                return ResourceManager.GetString("ClienteNaoEncontrado", resourceCulture);
             }
         }
         
@@ -88,11 +106,92 @@ namespace _4_Recursos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Depósito realizado..
+        /// </summary>
+        public static string DepositoRealizado {
+            get {
+                return ResourceManager.GetString("DepositoRealizado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Doc realizado..
+        /// </summary>
+        public static string DocRealizado {
+            get {
+                return ResourceManager.GetString("DocRealizado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pix realizado..
+        /// </summary>
+        public static string PixRealizado {
+            get {
+                return ResourceManager.GetString("PixRealizado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cliente removido com sucesso..
+        /// </summary>
+        public static string RemoverCliente {
+            get {
+                return ResourceManager.GetString("RemoverCliente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cliente possui conta e não deve ser deletado..
+        /// </summary>
+        public static string RemoverClienteComConta {
+            get {
+                return ResourceManager.GetString("RemoverClienteComConta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Conta removida com sucesso..
         /// </summary>
         public static string RemoverConta {
             get {
                 return ResourceManager.GetString("RemoverConta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Saque realizado..
+        /// </summary>
+        public static string SaqueRealizado {
+            get {
+                return ResourceManager.GetString("SaqueRealizado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ted realizado..
+        /// </summary>
+        public static string TedRealizado {
+            get {
+                return ResourceManager.GetString("TedRealizado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tipo de transação inválida..
+        /// </summary>
+        public static string TransacaoInvalida {
+            get {
+                return ResourceManager.GetString("TransacaoInvalida", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transação não encontrada..
+        /// </summary>
+        public static string TransacaoNaoEncontrada {
+            get {
+                return ResourceManager.GetString("TransacaoNaoEncontrada", resourceCulture);
             }
         }
     }

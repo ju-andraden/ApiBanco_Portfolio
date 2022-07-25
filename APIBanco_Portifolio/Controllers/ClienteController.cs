@@ -32,7 +32,7 @@ namespace Apresentacao.Controllers
 
                 if (mensagem.StartsWith("Duplicate"))
                 {
-                    return BadRequest(MensagensCliente.ClienteExiste);
+                    return BadRequest(Mensagens.ClienteExiste);
                 }
 
                 return BadRequest(mensagem);
@@ -54,7 +54,7 @@ namespace Apresentacao.Controllers
 
             if (leiaCliente is null)
             {
-                return NotFound(MensagensCliente.ClienteNaoEncontrado);
+                return NotFound(Mensagens.ClienteNaoEncontrado);
             }
             return Ok(leiaCliente);
         }
@@ -66,7 +66,7 @@ namespace Apresentacao.Controllers
 
             if (atualizandoCliente is null)
             {
-                return NotFound(MensagensCliente.ClienteNaoEncontrado);
+                return NotFound(Mensagens.ClienteNaoEncontrado);
             }
 
             return Ok(atualizandoCliente);
@@ -81,7 +81,7 @@ namespace Apresentacao.Controllers
 
                 if (deletandoCliente is null)
                 {
-                    return NotFound(MensagensCliente.ClienteNaoEncontrado);
+                    return NotFound(Mensagens.ClienteNaoEncontrado);
                 }
 
                 return Ok(deletandoCliente);

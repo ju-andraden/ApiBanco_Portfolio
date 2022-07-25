@@ -23,6 +23,6 @@ namespace Dominio.Dto
         public Endereco Endereco { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public List<Conta> Contas { get; set; }
+        public List<Conta> Contas { get; set; }        
     }   
 }

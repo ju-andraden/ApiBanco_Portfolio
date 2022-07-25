@@ -95,7 +95,7 @@ namespace Aplicacao.Services
             _context.Contas.Remove(conta);
             _context.SaveChanges();
 
-            return MensagensConta.RemoverConta;
+            return Mensagens.RemoverConta;
         }
 
         private Conta BuscarContaPeloNumero(string numero)

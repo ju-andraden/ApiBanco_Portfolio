@@ -18,10 +18,13 @@ namespace Aplicacao.Services
 
         private readonly IContaService _contaService;
 
-        public ClienteService(ApiDbContext context, IContaService contaService)
+        private readonly ITransacaoService _transacaoService;
+
+        public ClienteService(ApiDbContext context, IContaService contaService, ITransacaoService transacaoService)
         {
             _context = context;
             _contaService = contaService;
+            _transacaoService = transacaoService;
         }
 
         public Cliente CriarCliente(CriarClienteDto criarClientDto)
@@ -92,13 +95,13 @@ namespace Aplicacao.Services
 
             if (cliente.Contas.Any())
             {
-                throw new Exception(MensagensCliente.RemoverClienteComConta);
+                throw new Exception(Mensagens.RemoverClienteComConta);
             }
 
             _context.Clientes.Remove(cliente);
             _context.SaveChanges();
 
-            return MensagensCliente.RemoverCliente;
+            return Mensagens.RemoverCliente;
         }
 
         private Cliente BuscarClientePeloCpf(string cpf)
@@ -108,7 +111,13 @@ namespace Aplicacao.Services
             if (cliente != null)
             {
                 cliente.Contas = _contaService.Ler(cliente.Id);
+
+                foreach (Conta conta in cliente.Contas)
+                {
+                    conta.Transacoes = _transacaoService.LerTransacoes(conta.Id, DateTime.MinValue, DateTime.MinValue);
+                }
             }
+
             return cliente;
         }
 

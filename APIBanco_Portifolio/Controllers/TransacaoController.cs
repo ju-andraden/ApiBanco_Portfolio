@@ -2,6 +2,7 @@
 using Aplicacao.Interfaces;
 using Aplicacao.Services;
 using Dominio.Dto;
+using Dominio.Entidade;
 using Dominio.Enum;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -31,7 +32,7 @@ namespace Apresentacao.Controllers
 
                 if (transacaoCriada is null)
                 {
-                    return Unauthorized(MensagensConta.ContaNaoEncontrada);
+                    return Unauthorized(Mensagens.ContaNaoEncontrada);
                 }
 
                 return Created($"/{transacaoCriada.Id}", transacaoCriada);
@@ -44,9 +45,9 @@ namespace Apresentacao.Controllers
         }
 
         [HttpGet("BuscarTodasAsTransacoes")]
-        public IActionResult LeiaTransacoes()
+        public IActionResult LeiaTransacoes(Guid id,DateTime dataInicio, DateTime dataFim)
         {
-            var leiaTransacoes = _transacaoService.LerTransacoes();
+            var leiaTransacoes = _transacaoService.LerTransacoes(id, dataInicio, dataFim);
             return Ok(leiaTransacoes);
         }
 
@@ -56,9 +57,10 @@ namespace Apresentacao.Controllers
             var leiaTransacao = _transacaoService.LerTransacao(id);
             if (leiaTransacao is null)
             {
-                return NotFound(MensagensTransacao.TransacaoNaoEncontrada);
+                return NotFound(Mensagens.TransacaoNaoEncontrada);
             }
             return Ok(leiaTransacao);
         }
     }
 }
+

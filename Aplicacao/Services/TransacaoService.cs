@@ -1,6 +1,7 @@
 ﻿using _4_Recursos;
 using Aplicacao.Interfaces;
 using Dominio.Dto;
+using Dominio.Entidade;
 using Dominio.Enum;
 using Infraestrutura.DataBase;
 using System;
@@ -50,9 +51,31 @@ namespace Aplicacao.Services
             return transacao;
         }
 
-        public List<Transacao> LerTransacoes()
+        public List<Transacao> LerTransacoes(Guid id, DateTime dataInicio, DateTime dataFim)
         {
-            return _context.Transacoes.ToList();
+            if (dataInicio == DateTime.MinValue)
+            {
+                dataInicio = new DateTime(2000, 1, 1);
+            }
+
+            if (dataFim == DateTime.MinValue)
+            {
+                dataFim = DateTime.Now;
+            }
+
+            var listaTransacoes = _context.Transacoes.Where(t => t.DataHora >= dataInicio && t.DataHora <= dataFim);
+
+            if (id != Guid.Empty)
+            {
+                listaTransacoes = listaTransacoes.Where(t => t.ContaId == id);
+            }
+
+            return listaTransacoes.ToList();
+        }
+
+        public List<Transacao> LerTransacoes(Guid id)
+        {
+            return LerTransacoes(id, DateTime.MinValue, DateTime.MinValue);
         }
 
         public Transacao LerTransacao(Guid id)
@@ -64,13 +87,6 @@ namespace Aplicacao.Services
                 return null;
             }
             return transacao;
-        }
-
-        public List<Transacao> LerTransacoes(Guid id)
-        {
-            var listaTransacoes = _context.Transacoes.Where(transacao => transacao.ContaId == id).ToList();
-
-            return listaTransacoes;
         }
 
         private Transacao BuscarTransacaoPeloId(Guid id)
@@ -97,22 +113,22 @@ namespace Aplicacao.Services
             switch (tipoTransacao)
             {
                 case 0:
-                    transacao.Descricao = MensagensTransacao.TedRealizado;
+                    transacao.Descricao = Mensagens.TedRealizado;
                     break;
                 case 1:
-                    transacao.Descricao = MensagensTransacao.DocRealizado;
+                    transacao.Descricao = Mensagens.DocRealizado;
                     break;
                 case 2:
-                    transacao.Descricao = MensagensTransacao.PixRealizado;
+                    transacao.Descricao = Mensagens.PixRealizado;
                     break;
                 case 3:
-                    transacao.Descricao = MensagensTransacao.DepositoRealizado;
+                    transacao.Descricao = Mensagens.DepositoRealizado;
                     break;
                 case 4:
-                    transacao.Descricao = MensagensTransacao.SaqueRealizado;
+                    transacao.Descricao = Mensagens.SaqueRealizado;
                     break;
                 default:
-                    throw new Exception(MensagensTransacao.TransacaoInvalida);
+                    throw new Exception(Mensagens.TransacaoInvalida);
             }
         }
     }

@@ -25,14 +25,14 @@ namespace Apresentacao.Controllers
 
                 if (contaCriada is null)
                 {
-                    return Unauthorized(MensagensCliente.ClienteNaoEncontrado);
+                    return Unauthorized(Mensagens.ClienteNaoEncontrado);
                 }
                 return Created($"/{criarContaDto.ClienteId}", contaCriada);
             }
 
             catch (Exception excecao)
             {
-                return BadRequest(MensagensConta.ContaExistente);
+                return BadRequest(Mensagens.ContaExistente);
             }
         }
 
@@ -51,7 +51,7 @@ namespace Apresentacao.Controllers
 
             if (resultado is null)
             {
-                return NotFound(MensagensConta.ContaNaoEncontrada);
+                return NotFound(Mensagens.ContaNaoEncontrada);
             }
             return Ok(resultado);
         }
@@ -63,7 +63,7 @@ namespace Apresentacao.Controllers
 
             if (atualizandoConta is null)
             {
-                return BadRequest(MensagensConta.ContaNaoEncontrada);
+                return BadRequest(Mensagens.ContaNaoEncontrada);
             }
 
             return Ok(atualizandoConta);
@@ -76,7 +76,7 @@ namespace Apresentacao.Controllers
 
             if (resultado is null)
             {
-                return NotFound(MensagensConta.ContaNaoEncontrada);
+                return NotFound(Mensagens.ContaNaoEncontrada);
             }
             return Ok(resultado);
         }
