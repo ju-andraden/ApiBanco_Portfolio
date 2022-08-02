@@ -1,19 +1,17 @@
-﻿using Dominio.Entidade;
-using System;
-using System.Collections.Generic;
+﻿using Dominio.Validacao;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
-namespace Dominio.Dto
+namespace Dominio.Entidade
 {
     public class Cliente
     {
         [Key]
         public Guid Id { get; set; }
         public Guid EnderecoId { get; set; }
+
+        [Required] //verifica se é nulo ou vazio
+        [PrimeiraLetraMaiuscula]
         public string Nome { get; set; }
         public DateTime? DataNascimento { get; set; }
         public string Cpf { get; set; }
@@ -23,6 +21,6 @@ namespace Dominio.Dto
         public Endereco Endereco { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public List<Conta> Contas { get; set; }        
-    }   
+        public List<Conta> Contas { get; set; }
+    }
 }

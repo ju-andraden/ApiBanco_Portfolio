@@ -3,20 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0-Apresentacao", "APIBanco_Portifolio\0-Apresentacao.csproj", "{EAED9B1E-8C97-460A-9D94-BF1F7E1FFFDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "0-Apresentacao", "APIBanco_Portifolio\0-Apresentacao.csproj", "{EAED9B1E-8C97-460A-9D94-BF1F7E1FFFDF}"
 	ProjectSection(ProjectDependencies) = postProject
 		{0E64E8B8-4161-4ECF-B9CC-BBF87DA209D4} = {0E64E8B8-4161-4ECF-B9CC-BBF87DA209D4}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1-Aplicacao", "Aplicacao\1-Aplicacao.csproj", "{93E161BB-86A0-4B65-8DAD-1C414537D57E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1-Aplicacao", "Aplicacao\1-Aplicacao.csproj", "{93E161BB-86A0-4B65-8DAD-1C414537D57E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2-Dominio", "Dominio\2-Dominio.csproj", "{0E64E8B8-4161-4ECF-B9CC-BBF87DA209D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2-Dominio", "Dominio\2-Dominio.csproj", "{0E64E8B8-4161-4ECF-B9CC-BBF87DA209D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3-Infraestrutura", "Infraestrutura\3-Infraestrutura.csproj", "{A31328D1-8E94-4E5C-9611-D8357ECB5080}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3-Infraestrutura", "Infraestrutura\3-Infraestrutura.csproj", "{A31328D1-8E94-4E5C-9611-D8357ECB5080}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4-Recursos", "Recursos\4-Recursos.csproj", "{5879E929-C7BB-42D6-A1C9-36CC77A7C5A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "4-Recursos", "Recursos\4-Recursos.csproj", "{5879E929-C7BB-42D6-A1C9-36CC77A7C5A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5-Testes", "Testes\5-Testes.csproj", "{4E8556A2-B640-4F1B-9DBE-CEA76D039F5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "5-Testes", "Testes\5-Testes.csproj", "{4E8556A2-B640-4F1B-9DBE-CEA76D039F5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

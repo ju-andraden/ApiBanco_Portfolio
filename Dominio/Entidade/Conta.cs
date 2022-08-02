@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace Dominio.Dto
+namespace Dominio.Entidade
 {
     public class Conta
     {

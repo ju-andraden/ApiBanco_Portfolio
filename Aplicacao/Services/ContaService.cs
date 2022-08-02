@@ -1,6 +1,7 @@
 ﻿using _4_Recursos;
 using Aplicacao.Interfaces;
 using Dominio.Dto;
+using Dominio.Entidade;
 using Infraestrutura.DataBase;
 using Microsoft.EntityFrameworkCore;
 using System;
