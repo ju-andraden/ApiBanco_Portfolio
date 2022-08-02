@@ -9,9 +9,6 @@ namespace Dominio.Entidade
         [Key]
         public Guid Id { get; set; }
         public Guid EnderecoId { get; set; }
-
-        [Required] //verifica se é nulo ou vazio
-        [PrimeiraLetraMaiuscula]
         public string Nome { get; set; }
         public DateTime? DataNascimento { get; set; }
         public string Cpf { get; set; }

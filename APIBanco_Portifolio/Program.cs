@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-//builder.Services.AddScoped<ITransactionService, TransactionService>();
 
 builder.Services.AddScoped<IContaService, ContaService>();
 

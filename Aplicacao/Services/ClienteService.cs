@@ -4,12 +4,6 @@ using Dominio.Dto;
 using Dominio.Entidade;
 using Infraestrutura.DataBase;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aplicacao.Services
 {

@@ -2,12 +2,13 @@
 
 namespace Dominio.Validacao
 {
-    //validacao de modelo com atributos personalizados
+    //validacao de modelo com atributos personalizados - validar uma prop
+    //reutilizada em outros modelos e props
     public class PrimeiraLetraMaiusculaAttribute : ValidationAttribute
     {
         //1-parametro: valor da prop
-        //2-parametro: informacoes do contexto, onde a validacao esta sendo executada (entidade Cliente)
-        public ValidationResult IsValid(object value, ValidationContext validationContext)
+        //2-parametro: informacoes do contexto, onde a validacao esta sendo executada (DTO CriarCliente)
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             if (value == null || string.IsNullOrEmpty(value.ToString()))
             {
