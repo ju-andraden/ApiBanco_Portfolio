@@ -1,7 +1,9 @@
 ﻿using _4_Recursos;
 using Aplicacao.Interfaces;
 using Dominio.Dto;
+using Dominio.Validacao;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace Apresentacao.Controllers
 {
@@ -19,6 +21,15 @@ namespace Apresentacao.Controllers
         [HttpPost("CriarCliente")]
         public IActionResult ClienteCriado([FromBody] CriarClienteDto criarClienteDto)
         {
+            /*var validator = new ClienteValidator();
+
+            var response = validator.Validate(criarClienteDto);
+
+            if (!response.IsValid)
+            {
+                return BadRequest(response.Errors);
+            }*/
+
             try
             {
                 var clienteCriado = _clienteService.CriarCliente(criarClienteDto);
@@ -91,7 +102,7 @@ namespace Apresentacao.Controllers
             {
                 return BadRequest(excecao.Message);
             }
-            
+
         }
     }
 }

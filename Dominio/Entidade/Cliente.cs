@@ -12,7 +12,7 @@ namespace Dominio.Entidade
         public string Nome { get; set; }
         public DateTime? DataNascimento { get; set; }
         public string Cpf { get; set; }
-        public string? Telefone { get; set; }
+        public string Telefone { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public Endereco Endereco { get; set; }

@@ -15,7 +15,6 @@ namespace Apresentacao.Controllers
 
     public class TransacaoController : ControllerBase
     {
-
         private readonly ITransacaoService _transacaoService;
 
         public TransacaoController(ITransacaoService transacaoService)

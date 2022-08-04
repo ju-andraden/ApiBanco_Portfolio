@@ -4,7 +4,7 @@ namespace Dominio.Validacao
 {
     //validacao de modelo com atributos personalizados - validar uma prop
     //reutilizada em outros modelos e props
-    public class PrimeiraLetraMaiusculaAttribute : ValidationAttribute
+    /*public class PrimeiraLetraMaiusculaAttribute : ValidationAttribute
     {
         //1-parametro: valor da prop
         //2-parametro: informacoes do contexto, onde a validacao esta sendo executada (DTO CriarCliente)
@@ -25,5 +25,5 @@ namespace Dominio.Validacao
 
             return ValidationResult.Success;
         }
-    }
+    }*/
 }
