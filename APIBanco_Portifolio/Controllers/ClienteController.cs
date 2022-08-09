@@ -50,9 +50,9 @@ namespace Apresentacao.Controllers
         }
 
         [HttpGet("BuscarClientePeloCpf")]
-        public IActionResult LeiaCliente(string cpf)
+        public async Task<IActionResult> LeiaCliente(string cpf)
         {
-            var leiaCliente = _clienteService.LerCliente(cpf);
+            var leiaCliente = await _clienteService.LerCliente(cpf);
 
             if (leiaCliente is null)
             {

@@ -50,7 +50,7 @@ namespace Aplicacao.Services
             return await _context.Clientes.ToListAsync();
         }
 
-        public Cliente LerCliente(string cpf)
+        public async Task<Cliente> LerCliente(string cpf)
         {
             var clienteEncontrado = BuscarClientePeloCpf(cpf);
             if (clienteEncontrado is null)
@@ -58,7 +58,7 @@ namespace Aplicacao.Services
                 return null;
             }
 
-            clienteEncontrado.Endereco = _context.Enderecos.FirstOrDefault(e => e.Id == clienteEncontrado.EnderecoId);
+            clienteEncontrado.Endereco = await _context.Enderecos.FirstOrDefaultAsync(e => e.Id == clienteEncontrado.EnderecoId);
 
             return clienteEncontrado;
         }

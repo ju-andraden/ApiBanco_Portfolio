@@ -11,7 +11,7 @@ namespace Aplicacao.Interfaces
     public interface IClienteService
     {
         public Task<Cliente> CriarCliente(CriarClienteDto criarClienteDto);
-        public Cliente LerCliente(string cpf);
+        public Task<Cliente> LerCliente(string cpf);
         public Task<List<Cliente>> LerClientes();
         public Cliente AtualizarCliente(string cpf, AtualizarClienteDto atualizarClienteDto);
         public string DeletarCliente(string cpf);
