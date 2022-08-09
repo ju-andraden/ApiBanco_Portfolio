@@ -19,20 +19,11 @@ namespace Apresentacao.Controllers
         }
 
         [HttpPost("CriarCliente")]
-        public IActionResult ClienteCriado([FromBody] CriarClienteDto criarClienteDto)
+        public async Task<IActionResult> ClienteCriado([FromBody] CriarClienteDto criarClienteDto)
         {
-            /*var validator = new ClienteValidator();
-
-            var response = validator.Validate(criarClienteDto);
-
-            if (!response.IsValid)
-            {
-                return BadRequest(response.Errors);
-            }*/
-
             try
             {
-                var clienteCriado = _clienteService.CriarCliente(criarClienteDto);
+                var clienteCriado = await _clienteService.CriarCliente(criarClienteDto);
 
                 return Created($"/{clienteCriado.Id}", clienteCriado);
             }

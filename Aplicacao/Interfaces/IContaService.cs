@@ -10,7 +10,7 @@ namespace Aplicacao.Interfaces
 {
     public interface IContaService
     {
-        public Conta Criar(CriarContaDto criarContaDto);
+        public Task<Conta> Criar(CriarContaDto criarContaDto);
         public Conta Ler(string numero);
         public List<Conta> Ler();
         public List<Conta> Ler(Guid id);

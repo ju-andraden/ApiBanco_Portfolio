@@ -18,11 +18,11 @@ namespace Apresentacao.Controllers
         }
 
         [HttpPost("CriarConta")]
-        public IActionResult Criado([FromBody] CriarContaDto criarContaDto)
+        public async Task<IActionResult> Criado([FromBody] CriarContaDto criarContaDto)
         {
             try
             {
-                var contaCriada = _contaService.Criar(criarContaDto);
+                var contaCriada = await _contaService.Criar(criarContaDto);
 
                 if (contaCriada is null)
                 {

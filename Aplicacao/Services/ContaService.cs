@@ -19,7 +19,7 @@ namespace Aplicacao.Services
             _transacaoService = transacaoService;
         }
 
-        public Conta Criar(CriarContaDto criarContaDto)
+        public async Task<Conta> Criar(CriarContaDto criarContaDto)
         {
             if (criarContaDto.ClienteId.Equals(Guid.Empty))
             {
@@ -38,8 +38,8 @@ namespace Aplicacao.Services
             conta.Numero = criarContaDto.Numero;
             conta.Agencia = criarContaDto.Agencia;
 
-            _context.Contas.Add(conta);
-            _context.SaveChanges();
+            await _context.Contas.AddAsync(conta);
+            await _context.SaveChangesAsync();
 
             return conta;
         }

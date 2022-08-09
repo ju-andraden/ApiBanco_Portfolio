@@ -22,7 +22,7 @@ namespace Aplicacao.Services
             _transacaoService = transacaoService;
         }
 
-        public Cliente CriarCliente(CriarClienteDto criarClientDto)
+        public async Task<Cliente> CriarCliente(CriarClienteDto criarClientDto)
         {
 
             Cliente cliente = new Cliente();
@@ -39,8 +39,8 @@ namespace Aplicacao.Services
             cliente.Endereco.Cidade = criarClientDto.Endereco.Cidade;
             cliente.Endereco.Estado = criarClientDto.Endereco.Estado;
 
-            _context.Clientes.Add(cliente);
-            _context.SaveChanges();
+            await _context.Clientes.AddAsync(cliente);
+            await _context.SaveChangesAsync();
 
             return cliente;
         }
