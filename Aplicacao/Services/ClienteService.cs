@@ -45,9 +45,9 @@ namespace Aplicacao.Services
             return cliente;
         }
 
-        public List<Cliente> LerClientes()
+        public async Task<List<Cliente>> LerClientes()
         {
-            return _context.Clientes.ToList();
+            return await _context.Clientes.ToListAsync();
         }
 
         public Cliente LerCliente(string cpf)

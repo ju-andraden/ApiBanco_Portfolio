@@ -42,9 +42,9 @@ namespace Apresentacao.Controllers
         }
 
         [HttpGet("BuscarTodosOsClientes")]
-        public IActionResult LeiaClientes()
+        public async Task<IActionResult> LeiaClientes()
         {
-            var leiaClientes = _clienteService.LerClientes();
+            var leiaClientes = await _clienteService.LerClientes();
 
             return Ok(leiaClientes);
         }

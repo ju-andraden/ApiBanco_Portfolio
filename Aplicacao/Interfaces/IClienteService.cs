@@ -12,7 +12,7 @@ namespace Aplicacao.Interfaces
     {
         public Task<Cliente> CriarCliente(CriarClienteDto criarClienteDto);
         public Cliente LerCliente(string cpf);
-        public List<Cliente> LerClientes();
+        public Task<List<Cliente>> LerClientes();
         public Cliente AtualizarCliente(string cpf, AtualizarClienteDto atualizarClienteDto);
         public string DeletarCliente(string cpf);
     }
