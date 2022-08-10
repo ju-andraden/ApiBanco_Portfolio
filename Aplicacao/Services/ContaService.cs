@@ -44,9 +44,9 @@ namespace Aplicacao.Services
             return conta;
         }
 
-        public List<Conta> Ler()
+        public async Task<List<Conta>> Ler()
         {
-            var contas = _context.Contas.ToList();
+            var contas = await _context.Contas.ToListAsync();
 
             return contas;
         }
