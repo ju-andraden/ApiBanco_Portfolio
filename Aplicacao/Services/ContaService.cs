@@ -10,7 +10,6 @@ namespace Aplicacao.Services
     public class ContaService : IContaService
     {
         private readonly ApiDbContext _context;
-
         private readonly ITransacaoService _transacaoService;
 
         public ContaService(ApiDbContext context, ITransacaoService transacaoService)
@@ -64,7 +63,8 @@ namespace Aplicacao.Services
 
         public async Task<List<Conta>> Ler(Guid id)
         {
-            var listaContas = await _context.Contas.Where(conta => conta.ClienteId == id).ToListAsync();
+            var listaContas = await _context.Contas.Where(conta 
+                => conta.ClienteId == id).ToListAsync();
 
             return listaContas;
         }
@@ -104,26 +104,25 @@ namespace Aplicacao.Services
 
         private async Task<Conta> BuscarContaPeloNumero(string numero)
         {
-            var conta = await _context.Contas.FirstOrDefaultAsync(conta => conta.Numero.Equals(numero));
+            var conta = await _context.Contas.FirstOrDefaultAsync(conta 
+                => conta.Numero.Equals(numero));
 
             if (conta != null)
             {
                 conta.Transacoes = await _transacaoService.LerTransacoes(conta.Id);
             }
-
             return conta;
         }
         private async Task<bool> ValidarSeClienteExiste(Guid clienteId)
         {
-            var cliente = await _context.Clientes.FirstOrDefaultAsync(cliente => cliente.Id.Equals(clienteId));
+            var cliente = await _context.Clientes.FirstOrDefaultAsync(cliente 
+                => cliente.Id.Equals(clienteId));
 
             if (cliente is null)
             {
                 return false;
             }
-
             return true;
         }
-        
     }
 }

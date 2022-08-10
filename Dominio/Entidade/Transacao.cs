@@ -1,10 +1,4 @@
-﻿using Dominio.Enum;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Dominio.Entidade
 {
@@ -17,5 +11,11 @@ namespace Dominio.Entidade
         public DateTime DataHora { get; set; }
         public decimal Valor { get; set; }
         public string TipoTransacao { get; set; }
+
+        public Transacao()
+        {
+            Descricao = string.Empty;
+            TipoTransacao = string.Empty;
+        }
     }
 }

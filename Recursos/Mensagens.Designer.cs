@@ -106,6 +106,15 @@ namespace _4_Recursos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cpf não pode ser nulo..
+        /// </summary>
+        public static string CpfNaoNulo {
+            get {
+                return ResourceManager.GetString("CpfNaoNulo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Depósito realizado..
         /// </summary>
         public static string DepositoRealizado {
@@ -129,6 +138,51 @@ namespace _4_Recursos {
         public static string PixRealizado {
             get {
                 return ResourceManager.GetString("PixRealizado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hífen na posição inválida..
+        /// </summary>
+        public static string PosicaoHifen {
+            get {
+                return ResourceManager.GetString("PosicaoHifen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ponto na posição inválida..
+        /// </summary>
+        public static string PosicaoPonto {
+            get {
+                return ResourceManager.GetString("PosicaoPonto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A primeira letra do nome deve ser maiúscula..
+        /// </summary>
+        public static string PrimeiraLetraMaiuscula {
+            get {
+                return ResourceManager.GetString("PrimeiraLetraMaiuscula", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quantidade de caracteres diferente de 14..
+        /// </summary>
+        public static string QtdeCaracteresDif {
+            get {
+                return ResourceManager.GetString("QtdeCaracteresDif", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O CPF deve ter 11 números..
+        /// </summary>
+        public static string QtdeNumerosCpf {
+            get {
+                return ResourceManager.GetString("QtdeNumerosCpf", resourceCulture);
             }
         }
         
@@ -192,6 +246,15 @@ namespace _4_Recursos {
         public static string TransacaoNaoEncontrada {
             get {
                 return ResourceManager.GetString("TransacaoNaoEncontrada", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to É permitido somente valores maior que zero..
+        /// </summary>
+        public static string ValorMaiorQueZero {
+            get {
+                return ResourceManager.GetString("ValorMaiorQueZero", resourceCulture);
             }
         }
     }

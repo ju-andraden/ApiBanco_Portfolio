@@ -1,10 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using _4_Recursos;
+using System.ComponentModel.DataAnnotations;
 
 namespace Dominio.Validacao
 {
     public class ValorMaiorQueZeroAttribute : ValidationAttribute
     {
-        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        protected override ValidationResult IsValid(object value, 
+            ValidationContext validationContext)
         {
             var numero = Convert.ToDecimal(value);
 
@@ -13,7 +15,7 @@ namespace Dominio.Validacao
                 return ValidationResult.Success;
             }
 
-            return new ValidationResult("É permitido somente valores maior que zero.");
+            return new ValidationResult(Mensagens.ValorMaiorQueZero);
         }
     }
 }

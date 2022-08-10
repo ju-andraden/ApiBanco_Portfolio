@@ -58,15 +58,16 @@ namespace Apresentacao.Controllers
         }
 
         [HttpPut("AtualizarConta")]
-        public async Task< IActionResult> Atualizado(string numeroConta, [FromBody] Conta novosDados)
+        public async Task<IActionResult> Atualizado(string numeroConta, 
+            [FromBody] Conta novosDados)
         {
-            var atualizandoConta = await _contaService.Atualizar(numeroConta, novosDados);
+            var atualizandoConta = await _contaService.Atualizar(numeroConta, 
+                novosDados);
 
             if (atualizandoConta is null)
             {
                 return BadRequest(Mensagens.ContaNaoEncontrada);
             }
-
             return Ok(atualizandoConta);
         }
 

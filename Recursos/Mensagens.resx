@@ -132,6 +132,9 @@
   <data name="ContaNaoEncontrada" xml:space="preserve">
     <value>Conta não encontrada.</value>
   </data>
+  <data name="CpfNaoNulo" xml:space="preserve">
+    <value>Cpf não pode ser nulo.</value>
+  </data>
   <data name="DepositoRealizado" xml:space="preserve">
     <value>Depósito realizado.</value>
   </data>
@@ -140,6 +143,21 @@
   </data>
   <data name="PixRealizado" xml:space="preserve">
     <value>Pix realizado.</value>
+  </data>
+  <data name="PosicaoHifen" xml:space="preserve">
+    <value>Hífen na posição inválida.</value>
+  </data>
+  <data name="PosicaoPonto" xml:space="preserve">
+    <value>Ponto na posição inválida.</value>
+  </data>
+  <data name="PrimeiraLetraMaiuscula" xml:space="preserve">
+    <value>A primeira letra do nome deve ser maiúscula.</value>
+  </data>
+  <data name="QtdeCaracteresDif" xml:space="preserve">
+    <value>Quantidade de caracteres diferente de 14.</value>
+  </data>
+  <data name="QtdeNumerosCpf" xml:space="preserve">
+    <value>O CPF deve ter 11 números.</value>
   </data>
   <data name="RemoverCliente" xml:space="preserve">
     <value>Cliente removido com sucesso.</value>
@@ -161,5 +179,8 @@
   </data>
   <data name="TransacaoNaoEncontrada" xml:space="preserve">
     <value>Transação não encontrada.</value>
+  </data>
+  <data name="ValorMaiorQueZero" xml:space="preserve">
+    <value>É permitido somente valores maior que zero.</value>
   </data>
 </root>

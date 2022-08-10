@@ -7,18 +7,16 @@ using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllers()
     .AddFluentValidation(options =>
     {
-        // Validate child properties and root collection elements
         options.ImplicitlyValidateChildProperties = true;
         options.ImplicitlyValidateRootCollectionElements = true;
-        // Automatic registration of validators in assembly
         options.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
     });
 
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IContaService, ContaService>();
@@ -33,7 +31,6 @@ builder.Services.AddDbContext<ApiDbContext>(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

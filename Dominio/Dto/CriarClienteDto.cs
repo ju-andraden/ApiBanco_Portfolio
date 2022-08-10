@@ -4,8 +4,7 @@ namespace Dominio.Dto
 {
     public class CriarClienteDto
     {
-        //[Required] //verifica se é nulo ou vazio
-        //[PrimeiraLetraMaiuscula]
+        [PrimeiraLetraMaiuscula]
         public string Nome { get; set; }
         public DateTime DataNascimento { get; set; }
 

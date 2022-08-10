@@ -16,7 +16,8 @@ namespace Aplicacao.Services
             _context = context;
         }
 
-        public async Task<Transacao> CriarTransacao(CriarTransacaoDto criarTransacaoDto)
+        public async Task<Transacao> CriarTransacao(CriarTransacaoDto
+            criarTransacaoDto)
         {
             if (criarTransacaoDto.ContaId.Equals(Guid.Empty))
             {
@@ -33,7 +34,8 @@ namespace Aplicacao.Services
             Transacao transacao = new Transacao();
             transacao.ContaId = criarTransacaoDto.ContaId;
             transacao.TipoTransacao = criarTransacaoDto.TipoTransacao.ToString();
-            transacao.Valor = decimal.Round(criarTransacaoDto.Valor, 2, MidpointRounding.AwayFromZero);
+            transacao.Valor = decimal.Round(criarTransacaoDto.Valor, 2,
+                MidpointRounding.AwayFromZero);
 
             transacao.DataHora = DateTime.Now;
             MensagemTipoTransacao(criarTransacaoDto, transacao);
@@ -44,7 +46,8 @@ namespace Aplicacao.Services
             return transacao;
         }
 
-        public async Task<List<Transacao>> LerTransacoes(Guid id, DateTime dataInicio, DateTime dataFim)
+        public async Task<List<Transacao>> LerTransacoes(Guid id, DateTime dataInicio,
+            DateTime dataFim)
         {
             if (dataInicio == DateTime.MinValue)
             {
@@ -56,14 +59,13 @@ namespace Aplicacao.Services
                 dataFim = DateTime.Now;
             }
 
-            var listaTransacoes = _context.Transacoes.Where(t 
+            var listaTransacoes = _context.Transacoes.Where(t
                 => t.DataHora >= dataInicio && t.DataHora <= dataFim);
 
             if (id == Guid.Empty)
             {
                 listaTransacoes = listaTransacoes.Where(t => t.ContaId == id);
             }
-
             return await listaTransacoes.ToListAsync();
         }
 
@@ -85,22 +87,24 @@ namespace Aplicacao.Services
 
         private async Task<Transacao> BuscarTransacaoPeloId(Guid id)
         {
-            var transacao = await _context.Transacoes.FirstOrDefaultAsync(transacao => transacao.Id.Equals(id));
+            var transacao = await _context.Transacoes.FirstOrDefaultAsync(transacao
+                => transacao.Id.Equals(id));
 
             return transacao;
         }
         private async Task<bool> ValidarSeContaExiste(Guid contaId)
         {
-            var conta = await _context.Contas.FirstOrDefaultAsync(conta => conta.Id.Equals(contaId));
+            var conta = await _context.Contas.FirstOrDefaultAsync(conta
+                => conta.Id.Equals(contaId));
 
             if (conta is null)
             {
                 return false;
             }
-
             return true;
         }
-        private void MensagemTipoTransacao(CriarTransacaoDto criarTransacaoDto, Transacao transacao)
+        private void MensagemTipoTransacao(CriarTransacaoDto criarTransacaoDto,
+            Transacao transacao)
         {
             var tipoTransacao = (int)criarTransacaoDto.TipoTransacao;
 

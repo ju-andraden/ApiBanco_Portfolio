@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Apresentacao.Controllers
 {
-
     [ApiController]
     [Route("[controller]")]
 
@@ -19,7 +18,8 @@ namespace Apresentacao.Controllers
         }
 
         [HttpPost("CriarTransacao")]
-        public async Task<IActionResult> TransacaoCriada([FromBody] CriarTransacaoDto criarTransacaoDto)
+        public async Task<IActionResult> TransacaoCriada([FromBody] CriarTransacaoDto 
+            criarTransacaoDto)
         {
             try
             {
@@ -29,7 +29,6 @@ namespace Apresentacao.Controllers
                 {
                     return Unauthorized(Mensagens.ContaNaoEncontrada);
                 }
-
                 return Created($"/{transacaoCriada.Id}", transacaoCriada);
             }
 
@@ -40,9 +39,12 @@ namespace Apresentacao.Controllers
         }
 
         [HttpGet("BuscarTodasAsTransacoes")]
-        public async Task<IActionResult> LeiaTransacoes(Guid id, DateTime dataInicio, DateTime dataFim)
+        public async Task<IActionResult> LeiaTransacoes(Guid id, DateTime 
+            dataInicio, DateTime dataFim)
         {
-            var leiaTransacoes = await _transacaoService.LerTransacoes(id, dataInicio, dataFim);
+            var leiaTransacoes = await _transacaoService.LerTransacoes(id, 
+                dataInicio, dataFim);
+
             return Ok(leiaTransacoes);
         }
 
@@ -59,4 +61,3 @@ namespace Apresentacao.Controllers
         }
     }
 }
-

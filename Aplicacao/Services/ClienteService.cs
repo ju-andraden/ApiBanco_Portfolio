@@ -10,12 +10,11 @@ namespace Aplicacao.Services
     public class ClienteService : IClienteService
     {
         private readonly ApiDbContext _context;
-
         private readonly IContaService _contaService;
-
         private readonly ITransacaoService _transacaoService;
 
-        public ClienteService(ApiDbContext context, IContaService contaService, ITransacaoService transacaoService)
+        public ClienteService(ApiDbContext context, IContaService contaService, 
+            ITransacaoService transacaoService)
         {
             _context = context;
             _contaService = contaService;
@@ -24,7 +23,6 @@ namespace Aplicacao.Services
 
         public async Task<Cliente> CriarCliente(CriarClienteDto criarClientDto)
         {
-
             Cliente cliente = new Cliente();
             cliente.Nome = criarClientDto.Nome;
             cliente.DataNascimento = criarClientDto.DataNascimento;
@@ -59,12 +57,14 @@ namespace Aplicacao.Services
                 return null;
             }
 
-            clienteEncontrado.Endereco = await _context.Enderecos.FirstOrDefaultAsync(e => e.Id == clienteEncontrado.EnderecoId);
+            clienteEncontrado.Endereco = await _context.Enderecos
+                .FirstOrDefaultAsync(e => e.Id == clienteEncontrado.EnderecoId);
 
             return clienteEncontrado;
         }
 
-        public async Task<Cliente> AtualizarCliente(string cpf, AtualizarClienteDto atualizarClienteDto)
+        public async Task<Cliente> AtualizarCliente(string cpf, AtualizarClienteDto 
+            atualizarClienteDto)
         {
             var cliente = await BuscarClientePeloCpf(cpf);
 
@@ -75,7 +75,6 @@ namespace Aplicacao.Services
 
             AtualizarClienteSemDadosNulos(cliente, atualizarClienteDto);
 
-            //essa linha é sincrona
             _context.Entry(cliente).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
@@ -104,7 +103,8 @@ namespace Aplicacao.Services
 
         private async Task<Cliente> BuscarClientePeloCpf(string cpf)
         {
-            var cliente = await _context.Clientes.FirstOrDefaultAsync(cliente => cliente.Cpf.Equals(cpf));
+            var cliente = await _context.Clientes.FirstOrDefaultAsync(cliente 
+                => cliente.Cpf.Equals(cpf));
 
             if (cliente != null)
             {
@@ -112,14 +112,16 @@ namespace Aplicacao.Services
 
                 foreach (Conta conta in cliente.Contas)
                 {
-                    conta.Transacoes = await _transacaoService.LerTransacoes(conta.Id, DateTime.MinValue, DateTime.MinValue);
+                    conta.Transacoes = await _transacaoService.LerTransacoes(conta.Id, 
+                        DateTime.MinValue, DateTime.MinValue);
                 }
             }
 
             return cliente;
         }
 
-        private void AtualizarClienteSemDadosNulos(Cliente cliente, AtualizarClienteDto atualizarClienteDto)
+        private void AtualizarClienteSemDadosNulos(Cliente cliente, AtualizarClienteDto 
+            atualizarClienteDto)
         {
             if (atualizarClienteDto.Nome != null)
             {

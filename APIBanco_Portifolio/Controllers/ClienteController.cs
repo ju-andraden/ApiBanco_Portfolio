@@ -3,7 +3,6 @@ using Aplicacao.Interfaces;
 using Dominio.Dto;
 using Microsoft.AspNetCore.Mvc;
 
-
 namespace Apresentacao.Controllers
 {
     [ApiController]
@@ -18,7 +17,8 @@ namespace Apresentacao.Controllers
         }
 
         [HttpPost("CriarCliente")]
-        public async Task<IActionResult> ClienteCriado([FromBody] CriarClienteDto criarClienteDto)
+        public async Task<IActionResult> ClienteCriado([FromBody] CriarClienteDto 
+            criarClienteDto)
         {
             try
             {
@@ -35,7 +35,6 @@ namespace Apresentacao.Controllers
                 {
                     return BadRequest(Mensagens.ClienteExiste);
                 }
-
                 return BadRequest(mensagem);
             }
         }
@@ -61,15 +60,16 @@ namespace Apresentacao.Controllers
         }
 
         [HttpPut("AtualizarCliente")]
-        public async Task<IActionResult> AtualizandoCliente(string cpf, [FromBody] AtualizarClienteDto atualizarClienteDto)
+        public async Task<IActionResult> AtualizandoCliente(string cpf, 
+            [FromBody] AtualizarClienteDto atualizarClienteDto)
         {
-            var atualizandoCliente = await _clienteService.AtualizarCliente(cpf, atualizarClienteDto);
+            var atualizandoCliente = await _clienteService.AtualizarCliente(cpf, 
+                atualizarClienteDto);
 
             if (atualizandoCliente is null)
             {
                 return NotFound(Mensagens.ClienteNaoEncontrado);
             }
-
             return Ok(atualizandoCliente);
         }
 
@@ -84,7 +84,6 @@ namespace Apresentacao.Controllers
                 {
                     return NotFound(Mensagens.ClienteNaoEncontrado);
                 }
-
                 return Ok(deletandoCliente);
             }
 
@@ -92,7 +91,6 @@ namespace Apresentacao.Controllers
             {
                 return BadRequest(excecao.Message);
             }
-
         }
     }
 }

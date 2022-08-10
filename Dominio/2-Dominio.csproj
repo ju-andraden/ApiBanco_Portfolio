@@ -13,4 +13,8 @@
     <PackageReference Include="Stripe.net" Version="39.126.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Recursos\4-Recursos.csproj" />
+  </ItemGroup>
+
 </Project>
