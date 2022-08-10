@@ -25,7 +25,7 @@ namespace Aplicacao.Services
 
             var existe = ValidarSeContaExiste(criarTransacaoDto.ContaId);
 
-            if (!existe)
+            if (!await existe)
             {
                 return null;
             }
@@ -89,9 +89,9 @@ namespace Aplicacao.Services
 
             return transacao;
         }
-        private bool ValidarSeContaExiste(Guid contaId)
+        private async Task<bool> ValidarSeContaExiste(Guid contaId)
         {
-            var conta = _context.Contas.FirstOrDefault(conta => conta.Id.Equals(contaId));
+            var conta = await _context.Contas.FirstOrDefaultAsync(conta => conta.Id.Equals(contaId));
 
             if (conta is null)
             {
