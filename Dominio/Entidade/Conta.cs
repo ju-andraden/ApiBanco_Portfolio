@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace Dominio.Entidade
 {
@@ -12,11 +7,18 @@ namespace Dominio.Entidade
     {
         [Key]
         public Guid Id { get; set; }
-        public Guid? ClienteId { get; set; }
+        public Guid ClienteId { get; set; }
         public string Numero { get; set; }
-        public string? Agencia { get; set; }
+        public string Agencia { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public List<Transacao>? Transacoes { get; set; }
+
+        public Conta()
+        {
+            ClienteId = Guid.Empty;
+            Numero = string.Empty;
+            Agencia = string.Empty;
+        }
     }
 }

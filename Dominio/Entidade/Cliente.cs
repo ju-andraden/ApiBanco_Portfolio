@@ -1,5 +1,4 @@
-﻿using Dominio.Validacao;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace Dominio.Entidade
@@ -18,6 +17,13 @@ namespace Dominio.Entidade
         public Endereco? Endereco { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public List<Conta> Contas { get; set; }
+        public List<Conta>? Contas { get; set; }
+
+        public Cliente()
+        {
+            Nome = string.Empty;
+            Cpf = string.Empty;
+            Telefone = string.Empty;
+        }
     }
 }
