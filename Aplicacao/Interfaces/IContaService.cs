@@ -13,7 +13,7 @@ namespace Aplicacao.Interfaces
         public Task<Conta> Criar(CriarContaDto criarContaDto);
         public Task<Conta> Ler(string numero);
         public Task<List<Conta>> Ler();
-        public List<Conta> Ler(Guid id);
+        public Task<List<Conta>> Ler(Guid id);
         public Task<Conta> Atualizar(string numeroConta, Conta novosDados);
         public Task<string> Deletar(string numero);
     }

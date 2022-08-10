@@ -26,7 +26,7 @@ namespace Aplicacao.Services
                 return null;
             }
 
-            var clienteExiste = ValidarSeClienteExiste(criarContaDto.ClienteId);
+            var clienteExiste = await ValidarSeClienteExiste(criarContaDto.ClienteId);
 
             if (!clienteExiste)
             {
@@ -60,6 +60,13 @@ namespace Aplicacao.Services
                 return null;
             }
             return conta;
+        }
+
+        public async Task<List<Conta>> Ler(Guid id)
+        {
+            var listaContas = await _context.Contas.Where(conta => conta.ClienteId == id).ToListAsync();
+
+            return listaContas;
         }
 
         public async Task<Conta> Atualizar(string numeroConta, Conta novosDados)
@@ -106,9 +113,9 @@ namespace Aplicacao.Services
 
             return conta;
         }
-        private bool ValidarSeClienteExiste(Guid clienteId)
+        private async Task<bool> ValidarSeClienteExiste(Guid clienteId)
         {
-            var cliente = _context.Clientes.FirstOrDefault(cliente => cliente.Id.Equals(clienteId));
+            var cliente = await _context.Clientes.FirstOrDefaultAsync(cliente => cliente.Id.Equals(clienteId));
 
             if (cliente is null)
             {
@@ -117,11 +124,6 @@ namespace Aplicacao.Services
 
             return true;
         }
-        public List<Conta> Ler(Guid id)
-        {
-            var listaContas = _context.Contas.Where(conta => conta.ClienteId == id).ToList();
-
-            return listaContas;
-        }
+        
     }
 }

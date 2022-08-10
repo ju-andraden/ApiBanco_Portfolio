@@ -108,7 +108,7 @@ namespace Aplicacao.Services
 
             if (cliente != null)
             {
-                cliente.Contas = _contaService.Ler(cliente.Id);
+                cliente.Contas = await _contaService.Ler(cliente.Id);
 
                 foreach (Conta conta in cliente.Contas)
                 {
