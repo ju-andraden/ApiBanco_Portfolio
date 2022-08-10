@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Dominio.Entidade
 {
@@ -16,5 +11,13 @@ namespace Dominio.Entidade
         public string Cep { get; set; }
         public string Cidade { get; set; }
         public string Estado { get; set; }
+
+        public Endereco()
+        {
+            Logradouro = string.Empty;
+            Cep = string.Empty;
+            Cidade = string.Empty;
+            Estado = string.Empty;
+        }
     }
 }

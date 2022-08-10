@@ -32,7 +32,7 @@ namespace Aplicacao.Services
             cliente.Telefone = criarClientDto.Telefone;
             cliente.EnderecoId = Guid.NewGuid();
 
-            cliente.Endereco = new Dominio.Entidade.Endereco();
+            cliente.Endereco = new Endereco();
             cliente.Endereco.Logradouro = criarClientDto.Endereco.Logradouro;
             cliente.Endereco.Numero = criarClientDto.Endereco.Numero;
             cliente.Endereco.Cep = criarClientDto.Endereco.Cep;
@@ -52,7 +52,7 @@ namespace Aplicacao.Services
 
         public async Task<Cliente> LerCliente(string cpf)
         {
-            var clienteEncontrado = BuscarClientePeloCpf(cpf);
+            var clienteEncontrado = await BuscarClientePeloCpf(cpf);
             if (clienteEncontrado is null)
             {
                 return null;
@@ -65,7 +65,7 @@ namespace Aplicacao.Services
 
         public async Task<Cliente> AtualizarCliente(string cpf, AtualizarClienteDto atualizarClienteDto)
         {
-            var cliente = BuscarClientePeloCpf(cpf);
+            var cliente = await BuscarClientePeloCpf(cpf);
             if (cliente is null)
             {
                 return null;
@@ -73,6 +73,7 @@ namespace Aplicacao.Services
 
             AtualizarClienteSemDadosNulos(cliente, atualizarClienteDto);
 
+            //essa linha é sincrona
             _context.Entry(cliente).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
@@ -81,7 +82,7 @@ namespace Aplicacao.Services
 
         public async Task<string> DeletarCliente(string cpf)
         {
-            var cliente = BuscarClientePeloCpf(cpf);
+            var cliente = await BuscarClientePeloCpf(cpf);
 
             if (cliente is null)
             {
@@ -99,9 +100,9 @@ namespace Aplicacao.Services
             return Mensagens.RemoverCliente;
         }
 
-        private Cliente BuscarClientePeloCpf(string cpf)
+        private async Task<Cliente> BuscarClientePeloCpf(string cpf)
         {
-            var cliente = _context.Clientes.FirstOrDefault(cliente => cliente.Cpf.Equals(cpf));
+            var cliente = await _context.Clientes.FirstOrDefaultAsync(cliente => cliente.Cpf.Equals(cpf));
 
             if (cliente != null)
             {
@@ -133,7 +134,7 @@ namespace Aplicacao.Services
                 cliente.Telefone = atualizarClienteDto.Telefone;
             }
 
-            cliente.Endereco = new Dominio.Entidade.Endereco();
+            cliente.Endereco = new Endereco();
             cliente.Endereco.Id = cliente.EnderecoId;
 
             cliente.Endereco.Logradouro = atualizarClienteDto.Endereco.Logradouro;

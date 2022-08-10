@@ -2,14 +2,7 @@
 using Aplicacao.Interfaces;
 using Dominio.Dto;
 using Dominio.Entidade;
-using Dominio.Enum;
 using Infraestrutura.DataBase;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aplicacao.Services
 {

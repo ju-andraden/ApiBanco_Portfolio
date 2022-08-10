@@ -15,7 +15,7 @@ namespace Dominio.Entidade
         public string Telefone { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public Endereco Endereco { get; set; }
+        public Endereco? Endereco { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public List<Conta> Contas { get; set; }

@@ -1,10 +1,6 @@
 ﻿using _4_Recursos;
 using Aplicacao.Interfaces;
-using Aplicacao.Services;
 using Dominio.Dto;
-using Dominio.Entidade;
-using Dominio.Enum;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Apresentacao.Controllers
@@ -44,7 +40,7 @@ namespace Apresentacao.Controllers
         }
 
         [HttpGet("BuscarTodasAsTransacoes")]
-        public IActionResult LeiaTransacoes(Guid id,DateTime dataInicio, DateTime dataFim)
+        public IActionResult LeiaTransacoes(Guid id, DateTime dataInicio, DateTime dataFim)
         {
             var leiaTransacoes = _transacaoService.LerTransacoes(id, dataInicio, dataFim);
             return Ok(leiaTransacoes);
