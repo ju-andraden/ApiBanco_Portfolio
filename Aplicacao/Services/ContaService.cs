@@ -108,7 +108,7 @@ namespace Aplicacao.Services
 
             if (conta != null)
             {
-                conta.Transacoes = _transacaoService.LerTransacoes(conta.Id);
+                conta.Transacoes = await _transacaoService.LerTransacoes(conta.Id);
             }
 
             return conta;

@@ -3,6 +3,7 @@ using Aplicacao.Interfaces;
 using Dominio.Dto;
 using Dominio.Entidade;
 using Infraestrutura.DataBase;
+using Microsoft.EntityFrameworkCore;
 
 namespace Aplicacao.Services
 {
@@ -43,7 +44,7 @@ namespace Aplicacao.Services
             return transacao;
         }
 
-        public List<Transacao> LerTransacoes(Guid id, DateTime dataInicio, DateTime dataFim)
+        public async Task<List<Transacao>> LerTransacoes(Guid id, DateTime dataInicio, DateTime dataFim)
         {
             if (dataInicio == DateTime.MinValue)
             {
@@ -55,19 +56,20 @@ namespace Aplicacao.Services
                 dataFim = DateTime.Now;
             }
 
-            var listaTransacoes = _context.Transacoes.Where(t => t.DataHora >= dataInicio && t.DataHora <= dataFim);
+            var listaTransacoes = _context.Transacoes.Where(t 
+                => t.DataHora >= dataInicio && t.DataHora <= dataFim);
 
-            if (id != Guid.Empty)
+            if (id == Guid.Empty)
             {
                 listaTransacoes = listaTransacoes.Where(t => t.ContaId == id);
             }
 
-            return listaTransacoes.ToList();
+            return await listaTransacoes.ToListAsync();
         }
 
-        public List<Transacao> LerTransacoes(Guid id)
+        public async Task<List<Transacao>> LerTransacoes(Guid id)
         {
-            return LerTransacoes(id, DateTime.MinValue, DateTime.MinValue);
+            return await LerTransacoes(id, DateTime.MinValue, DateTime.MinValue);
         }
 
         public Transacao LerTransacao(Guid id)

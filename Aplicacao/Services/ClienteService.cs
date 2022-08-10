@@ -112,7 +112,7 @@ namespace Aplicacao.Services
 
                 foreach (Conta conta in cliente.Contas)
                 {
-                    conta.Transacoes = _transacaoService.LerTransacoes(conta.Id, DateTime.MinValue, DateTime.MinValue);
+                    conta.Transacoes = await _transacaoService.LerTransacoes(conta.Id, DateTime.MinValue, DateTime.MinValue);
                 }
             }
 

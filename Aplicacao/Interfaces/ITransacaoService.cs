@@ -7,7 +7,7 @@ namespace Aplicacao.Interfaces
     {
         public Task<Transacao> CriarTransacao(CriarTransacaoDto criarTransacaoDto);
         public Transacao LerTransacao(Guid id);
-        public List<Transacao> LerTransacoes(Guid id, DateTime dataInicio, DateTime dataFim);
-        public List<Transacao> LerTransacoes(Guid id);
+        public Task<List<Transacao>> LerTransacoes(Guid id, DateTime dataInicio, DateTime dataFim);
+        public Task<List<Transacao>> LerTransacoes(Guid id);
     }
 }

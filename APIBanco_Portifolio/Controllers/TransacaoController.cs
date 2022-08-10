@@ -40,9 +40,9 @@ namespace Apresentacao.Controllers
         }
 
         [HttpGet("BuscarTodasAsTransacoes")]
-        public IActionResult LeiaTransacoes(Guid id, DateTime dataInicio, DateTime dataFim)
+        public async Task<IActionResult> LeiaTransacoes(Guid id, DateTime dataInicio, DateTime dataFim)
         {
-            var leiaTransacoes = _transacaoService.LerTransacoes(id, dataInicio, dataFim);
+            var leiaTransacoes = await _transacaoService.LerTransacoes(id, dataInicio, dataFim);
             return Ok(leiaTransacoes);
         }
 
