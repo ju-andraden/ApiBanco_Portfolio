@@ -1,7 +1,6 @@
 ﻿using _4_Recursos;
 using Aplicacao.Interfaces;
 using Dominio.Dto;
-using Dominio.Validacao;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -62,7 +61,7 @@ namespace Apresentacao.Controllers
         }
 
         [HttpPut("AtualizarCliente")]
-        public async Task <IActionResult> AtualizandoCliente(string cpf, [FromBody] AtualizarClienteDto atualizarClienteDto)
+        public async Task<IActionResult> AtualizandoCliente(string cpf, [FromBody] AtualizarClienteDto atualizarClienteDto)
         {
             var atualizandoCliente = await _clienteService.AtualizarCliente(cpf, atualizarClienteDto);
 

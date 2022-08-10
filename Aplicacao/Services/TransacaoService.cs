@@ -6,7 +6,6 @@ using Infraestrutura.DataBase;
 
 namespace Aplicacao.Services
 {
-
     public class TransacaoService : ITransacaoService
     {
         private readonly ApiDbContext _context;
@@ -16,7 +15,7 @@ namespace Aplicacao.Services
             _context = context;
         }
 
-        public Transacao CriarTransacao(CriarTransacaoDto criarTransacaoDto)
+        public async Task<Transacao> CriarTransacao(CriarTransacaoDto criarTransacaoDto)
         {
             if (criarTransacaoDto.ContaId.Equals(Guid.Empty))
             {
@@ -38,8 +37,8 @@ namespace Aplicacao.Services
             transacao.DataHora = DateTime.Now;
             MensagemTipoTransacao(criarTransacaoDto, transacao);
 
-            _context.Transacoes.Add(transacao);
-            _context.SaveChanges();
+            await _context.Transacoes.AddAsync(transacao);
+            await _context.SaveChangesAsync();
 
             return transacao;
         }

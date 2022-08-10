@@ -19,11 +19,11 @@ namespace Apresentacao.Controllers
         }
 
         [HttpPost("CriarTransacao")]
-        public IActionResult TransacaoCriada([FromBody] CriarTransacaoDto criarTransacaoDto)
+        public async Task<IActionResult> TransacaoCriada([FromBody] CriarTransacaoDto criarTransacaoDto)
         {
             try
             {
-                var transacaoCriada = _transacaoService.CriarTransacao(criarTransacaoDto);
+                var transacaoCriada = await _transacaoService.CriarTransacao(criarTransacaoDto);
 
                 if (transacaoCriada is null)
                 {
