@@ -62,7 +62,7 @@ namespace Aplicacao.Services
             var listaTransacoes = _context.Transacoes.Where(t
                 => t.DataHora >= dataInicio && t.DataHora <= dataFim);
 
-            if (id == Guid.Empty)
+            if (id != Guid.Empty)
             {
                 listaTransacoes = listaTransacoes.Where(t => t.ContaId == id);
             }
