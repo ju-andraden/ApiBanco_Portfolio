@@ -46,9 +46,9 @@ namespace Apresentacao.Controllers
         }
 
         [HttpGet("BuscarContaPeloNumero")]
-        public IActionResult Leia(string numero)
+        public async Task<IActionResult> Leia(string numero)
         {
-            var resultado = _contaService.Ler(numero);
+            var resultado = await _contaService.Ler(numero);
 
             if (resultado is null)
             {

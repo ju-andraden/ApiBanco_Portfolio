@@ -51,7 +51,7 @@ namespace Aplicacao.Services
             return contas;
         }
 
-        public Conta Ler(string numero)
+        public async Task<Conta> Ler(string numero)
         {
             var conta = BuscarContaPeloNumero(numero);
 
