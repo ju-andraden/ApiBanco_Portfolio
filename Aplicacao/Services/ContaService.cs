@@ -53,7 +53,7 @@ namespace Aplicacao.Services
 
         public async Task<Conta> Ler(string numero)
         {
-            var conta = BuscarContaPeloNumero(numero);
+            var conta = await BuscarContaPeloNumero(numero);
 
             if (conta is null)
             {
@@ -64,12 +64,13 @@ namespace Aplicacao.Services
 
         public async Task<Conta> Atualizar(string numeroConta, Conta novosDados)
         {
-            var conta = BuscarContaPeloNumero(numeroConta);
+            var conta = await BuscarContaPeloNumero(numeroConta);
 
             if (conta is null)
             {
                 return null;
             }
+
             conta.Agencia = novosDados.Agencia;
             conta.Numero = novosDados.Numero;
 
@@ -81,7 +82,7 @@ namespace Aplicacao.Services
 
         public async Task<string> Deletar(string numero)
         {
-            var conta = BuscarContaPeloNumero(numero);
+            var conta = await BuscarContaPeloNumero(numero);
 
             if (conta is null)
             {
@@ -94,9 +95,9 @@ namespace Aplicacao.Services
             return Mensagens.RemoverConta;
         }
 
-        private Conta BuscarContaPeloNumero(string numero)
+        private async Task<Conta> BuscarContaPeloNumero(string numero)
         {
-            var conta = _context.Contas.FirstOrDefault(conta => conta.Numero.Equals(numero));
+            var conta = await _context.Contas.FirstOrDefaultAsync(conta => conta.Numero.Equals(numero));
 
             if (conta != null)
             {

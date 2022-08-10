@@ -53,6 +53,7 @@ namespace Aplicacao.Services
         public async Task<Cliente> LerCliente(string cpf)
         {
             var clienteEncontrado = await BuscarClientePeloCpf(cpf);
+
             if (clienteEncontrado is null)
             {
                 return null;
@@ -66,6 +67,7 @@ namespace Aplicacao.Services
         public async Task<Cliente> AtualizarCliente(string cpf, AtualizarClienteDto atualizarClienteDto)
         {
             var cliente = await BuscarClientePeloCpf(cpf);
+
             if (cliente is null)
             {
                 return null;
@@ -94,8 +96,8 @@ namespace Aplicacao.Services
                 throw new Exception(Mensagens.RemoverClienteComConta);
             }
 
-           _context.Clientes.Remove(cliente);
-           await _context.SaveChangesAsync();
+            _context.Clientes.Remove(cliente);
+            await _context.SaveChangesAsync();
 
             return Mensagens.RemoverCliente;
         }
