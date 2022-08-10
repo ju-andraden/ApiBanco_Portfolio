@@ -14,6 +14,6 @@ namespace Aplicacao.Interfaces
         public Task<Cliente> LerCliente(string cpf);
         public Task<List<Cliente>> LerClientes();
         public Task<Cliente> AtualizarCliente(string cpf, AtualizarClienteDto atualizarClienteDto);
-        public string DeletarCliente(string cpf);
+        public Task<string> DeletarCliente(string cpf);
     }
 }

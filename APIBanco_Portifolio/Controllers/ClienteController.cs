@@ -75,11 +75,11 @@ namespace Apresentacao.Controllers
         }
 
         [HttpDelete("DeletarCliente")]
-        public IActionResult DeletandoCliente(string cpf)
+        public async Task<IActionResult> DeletandoCliente(string cpf)
         {
             try
             {
-                var deletandoCliente = _clienteService.DeletarCliente(cpf);
+                var deletandoCliente = await _clienteService.DeletarCliente(cpf);
 
                 if (deletandoCliente is null)
                 {

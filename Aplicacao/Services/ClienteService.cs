@@ -79,7 +79,7 @@ namespace Aplicacao.Services
             return cliente;
         }
 
-        public string DeletarCliente(string cpf)
+        public async Task<string> DeletarCliente(string cpf)
         {
             var cliente = BuscarClientePeloCpf(cpf);
 
@@ -93,8 +93,8 @@ namespace Aplicacao.Services
                 throw new Exception(Mensagens.RemoverClienteComConta);
             }
 
-            _context.Clientes.Remove(cliente);
-            _context.SaveChanges();
+           _context.Clientes.Remove(cliente);
+           await _context.SaveChangesAsync();
 
             return Mensagens.RemoverCliente;
         }
