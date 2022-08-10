@@ -63,7 +63,7 @@ namespace Aplicacao.Services
             return clienteEncontrado;
         }
 
-        public Cliente AtualizarCliente(string cpf, AtualizarClienteDto atualizarClienteDto)
+        public async Task<Cliente> AtualizarCliente(string cpf, AtualizarClienteDto atualizarClienteDto)
         {
             var cliente = BuscarClientePeloCpf(cpf);
             if (cliente is null)
@@ -74,7 +74,7 @@ namespace Aplicacao.Services
             AtualizarClienteSemDadosNulos(cliente, atualizarClienteDto);
 
             _context.Entry(cliente).State = EntityState.Modified;
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return cliente;
         }

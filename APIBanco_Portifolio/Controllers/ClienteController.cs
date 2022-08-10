@@ -62,9 +62,9 @@ namespace Apresentacao.Controllers
         }
 
         [HttpPut("AtualizarCliente")]
-        public IActionResult AtualizandoCliente(string cpf, [FromBody] AtualizarClienteDto atualizarClienteDto)
+        public async Task <IActionResult> AtualizandoCliente(string cpf, [FromBody] AtualizarClienteDto atualizarClienteDto)
         {
-            var atualizandoCliente = _clienteService.AtualizarCliente(cpf, atualizarClienteDto);
+            var atualizandoCliente = await _clienteService.AtualizarCliente(cpf, atualizarClienteDto);
 
             if (atualizandoCliente is null)
             {
