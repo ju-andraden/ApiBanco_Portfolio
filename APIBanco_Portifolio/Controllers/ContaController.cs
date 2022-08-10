@@ -71,9 +71,9 @@ namespace Apresentacao.Controllers
         }
 
         [HttpDelete("DeletarConta")]
-        public IActionResult Deletando(string numero)
+        public async Task<IActionResult> Deletando(string numero)
         {
-            var resultado = _contaService.Deletar(numero);
+            var resultado = await _contaService.Deletar(numero);
 
             if (resultado is null)
             {

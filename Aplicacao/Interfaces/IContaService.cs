@@ -15,6 +15,6 @@ namespace Aplicacao.Interfaces
         public Task<List<Conta>> Ler();
         public List<Conta> Ler(Guid id);
         public Task<Conta> Atualizar(string numeroConta, Conta novosDados);
-        public string Deletar(string numero);
+        public Task<string> Deletar(string numero);
     }
 }

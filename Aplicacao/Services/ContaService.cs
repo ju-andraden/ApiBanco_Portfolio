@@ -79,7 +79,7 @@ namespace Aplicacao.Services
             return conta;
         }
 
-        public string Deletar(string numero)
+        public async Task<string> Deletar(string numero)
         {
             var conta = BuscarContaPeloNumero(numero);
 
@@ -89,7 +89,7 @@ namespace Aplicacao.Services
             }
 
             _context.Contas.Remove(conta);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return Mensagens.RemoverConta;
         }
