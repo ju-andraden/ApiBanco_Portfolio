@@ -47,9 +47,10 @@ namespace Apresentacao.Controllers
         }
 
         [HttpGet("BuscarTransacaoPeloId")]
-        public IActionResult LeiaTransacao(Guid id)
+        public async Task<IActionResult> LeiaTransacao(Guid id)
         {
-            var leiaTransacao = _transacaoService.LerTransacao(id);
+            var leiaTransacao = await _transacaoService.LerTransacao(id);
+
             if (leiaTransacao is null)
             {
                 return NotFound(Mensagens.TransacaoNaoEncontrada);

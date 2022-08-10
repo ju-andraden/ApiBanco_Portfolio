@@ -72,9 +72,9 @@ namespace Aplicacao.Services
             return await LerTransacoes(id, DateTime.MinValue, DateTime.MinValue);
         }
 
-        public Transacao LerTransacao(Guid id)
+        public async Task<Transacao> LerTransacao(Guid id)
         {
-            var transacao = BuscarTransacaoPeloId(id);
+            var transacao = await BuscarTransacaoPeloId(id);
 
             if (transacao is null)
             {
@@ -83,9 +83,9 @@ namespace Aplicacao.Services
             return transacao;
         }
 
-        private Transacao BuscarTransacaoPeloId(Guid id)
+        private async Task<Transacao> BuscarTransacaoPeloId(Guid id)
         {
-            var transacao = _context.Transacoes.FirstOrDefault(transacao => transacao.Id.Equals(id));
+            var transacao = await _context.Transacoes.FirstOrDefaultAsync(transacao => transacao.Id.Equals(id));
 
             return transacao;
         }
