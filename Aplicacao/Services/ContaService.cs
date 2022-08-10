@@ -62,7 +62,7 @@ namespace Aplicacao.Services
             return conta;
         }
 
-        public Conta Atualizar(string numeroConta, Conta novosDados)
+        public async Task<Conta> Atualizar(string numeroConta, Conta novosDados)
         {
             var conta = BuscarContaPeloNumero(numeroConta);
 
@@ -74,7 +74,7 @@ namespace Aplicacao.Services
             conta.Numero = novosDados.Numero;
 
             _context.Entry(conta).State = EntityState.Modified;
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return conta;
         }
