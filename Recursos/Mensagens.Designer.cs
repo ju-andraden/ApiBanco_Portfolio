@@ -106,11 +106,20 @@ namespace _4_Recursos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cpf não pode ser nulo..
+        ///   Looks up a localized string similar to Cpf não pode ser nulo ou vazio..
         /// </summary>
-        public static string CpfNaoNulo {
+        public static string CpfNuloOuVazio {
             get {
-                return ResourceManager.GetString("CpfNaoNulo", resourceCulture);
+                return ResourceManager.GetString("CpfNuloOuVazio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data de nascimento não pode ser nula ou vazia..
+        /// </summary>
+        public static string DataNascimentoNulaOuVazia {
+            get {
+                return ResourceManager.GetString("DataNascimentoNulaOuVazia", resourceCulture);
             }
         }
         
@@ -129,6 +138,15 @@ namespace _4_Recursos {
         public static string DocRealizado {
             get {
                 return ResourceManager.GetString("DocRealizado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nome não pode ser nulo ou vazio..
+        /// </summary>
+        public static string NomeNuloOuVazio {
+            get {
+                return ResourceManager.GetString("NomeNuloOuVazio", resourceCulture);
             }
         }
         

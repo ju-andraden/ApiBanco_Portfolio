@@ -132,14 +132,20 @@
   <data name="ContaNaoEncontrada" xml:space="preserve">
     <value>Conta não encontrada.</value>
   </data>
-  <data name="CpfNaoNulo" xml:space="preserve">
-    <value>Cpf não pode ser nulo.</value>
+  <data name="CpfNuloOuVazio" xml:space="preserve">
+    <value>Cpf não pode ser nulo ou vazio.</value>
+  </data>
+  <data name="DataNascimentoNulaOuVazia" xml:space="preserve">
+    <value>Data de nascimento não pode ser nula ou vazia.</value>
   </data>
   <data name="DepositoRealizado" xml:space="preserve">
     <value>Depósito realizado.</value>
   </data>
   <data name="DocRealizado" xml:space="preserve">
     <value>Doc realizado.</value>
+  </data>
+  <data name="NomeNuloOuVazio" xml:space="preserve">
+    <value>Nome não pode ser nulo ou vazio.</value>
   </data>
   <data name="PixRealizado" xml:space="preserve">
     <value>Pix realizado.</value>

@@ -21,21 +21,21 @@ namespace Aplicacao.Services
             _transacaoService = transacaoService;
         }
 
-        public async Task<Cliente> CriarCliente(CriarClienteDto criarClientDto)
+        public async Task<Cliente> CriarCliente(CriarClienteDto criarClienteDto)
         {
             Cliente cliente = new Cliente();
-            cliente.Nome = criarClientDto.Nome;
-            cliente.DataNascimento = criarClientDto.DataNascimento;
-            cliente.Cpf = criarClientDto.Cpf;
-            cliente.Telefone = criarClientDto.Telefone;
+            cliente.Nome = criarClienteDto.Nome;
+            cliente.DataNascimento = DateTime.Parse(criarClienteDto.DataNascimento);
+            cliente.Cpf = criarClienteDto.Cpf;
+            cliente.Telefone = criarClienteDto.Telefone;
             cliente.EnderecoId = Guid.NewGuid();
 
             cliente.Endereco = new Endereco();
-            cliente.Endereco.Logradouro = criarClientDto.Endereco.Logradouro;
-            cliente.Endereco.Numero = criarClientDto.Endereco.Numero;
-            cliente.Endereco.Cep = criarClientDto.Endereco.Cep;
-            cliente.Endereco.Cidade = criarClientDto.Endereco.Cidade;
-            cliente.Endereco.Estado = criarClientDto.Endereco.Estado;
+            cliente.Endereco.Logradouro = criarClienteDto.Endereco.Logradouro.ToUpper();
+            cliente.Endereco.Numero = criarClienteDto.Endereco.Numero;
+            cliente.Endereco.Cep = criarClienteDto.Endereco.Cep;
+            cliente.Endereco.Cidade = criarClienteDto.Endereco.Cidade.ToUpper();
+            cliente.Endereco.Estado = criarClienteDto.Endereco.Estado.ToUpper();
 
             await _context.Clientes.AddAsync(cliente);
             await _context.SaveChangesAsync();

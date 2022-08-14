@@ -17,7 +17,7 @@ namespace Apresentacao.Controllers
         }
 
         [HttpPost("CriarCliente")]
-        public async Task<IActionResult> ClienteCriado([FromBody] CriarClienteDto 
+        public async Task<IActionResult> ClienteCriado([FromBody] CriarClienteDto
             criarClienteDto)
         {
             try
@@ -29,13 +29,17 @@ namespace Apresentacao.Controllers
 
             catch (Exception excecao)
             {
-                var mensagem = excecao.InnerException.Message;
-
-                if (mensagem.StartsWith("Duplicate"))
+                if (excecao.InnerException != null)
                 {
-                    return BadRequest(Mensagens.ClienteExiste);
+                    var mensagem = excecao.InnerException.Message;
+
+                    if (mensagem.StartsWith("Duplicate"))
+                    {
+                        return BadRequest(Mensagens.ClienteExiste);
+                    }
+                    return BadRequest(mensagem);
                 }
-                return BadRequest(mensagem);
+                return BadRequest(excecao.Message);
             }
         }
 
@@ -60,10 +64,10 @@ namespace Apresentacao.Controllers
         }
 
         [HttpPut("AtualizarCliente")]
-        public async Task<IActionResult> AtualizandoCliente(string cpf, 
+        public async Task<IActionResult> AtualizandoCliente(string cpf,
             [FromBody] AtualizarClienteDto atualizarClienteDto)
         {
-            var atualizandoCliente = await _clienteService.AtualizarCliente(cpf, 
+            var atualizandoCliente = await _clienteService.AtualizarCliente(cpf,
                 atualizarClienteDto);
 
             if (atualizandoCliente is null)

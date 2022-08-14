@@ -58,8 +58,7 @@ namespace Apresentacao.Controllers
         }
 
         [HttpPut("AtualizarConta")]
-        public async Task<IActionResult> Atualizado(string numeroConta, 
-            [FromBody] Conta novosDados)
+        public async Task<IActionResult> Atualizado(string numeroConta, [FromBody] Conta novosDados)
         {
             var atualizandoConta = await _contaService.Atualizar(numeroConta, 
                 novosDados);

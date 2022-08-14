@@ -3,14 +3,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Dominio.Validacao
 {
-    public class PrimeiraLetraMaiusculaAttribute : ValidationAttribute
+    public class ValidarNomeAttribute : ValidationAttribute
     {
         protected override ValidationResult? IsValid(object value,
             ValidationContext validationContext)
         {
-            if (value == null || string.IsNullOrEmpty(value.ToString()))
+            if (value == null || string.IsNullOrEmpty(value.ToString())) 
             {
-                return ValidationResult.Success;
+                return new ValidationResult(Mensagens.NomeNuloOuVazio);
             }
 
             var primeiraLetra = value.ToString()[0].ToString();

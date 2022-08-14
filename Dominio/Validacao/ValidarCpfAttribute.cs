@@ -8,9 +8,9 @@ namespace Dominio.Validacao
         protected override ValidationResult? IsValid(object? value, 
             ValidationContext validationContext)
         {
-            if (value is null)
+            if (value == null || string.IsNullOrEmpty(value.ToString()))
             {
-                return new ValidationResult(Mensagens.CpfNaoNulo);
+                return new ValidationResult(Mensagens.CpfNuloOuVazio);
             }
 
             var cpf = value.ToString();
@@ -19,14 +19,17 @@ namespace Dominio.Validacao
             {
                 return new ValidationResult(Mensagens.QtdeCaracteresDif);
             }
+
             if (!ValidaPosicaoCaracter(cpf, 3, '.') || !ValidaPosicaoCaracter(cpf, 7, '.'))
             {
                 return new ValidationResult(Mensagens.PosicaoPonto);
             }
+
             if (!ValidaPosicaoCaracter(cpf, 11, '-'))
             {
                 return new ValidationResult(Mensagens.PosicaoHifen);
             }
+
             if (cpf.Where(c => char.IsNumber(c)).Count() != 11)
             {
                 return new ValidationResult(Mensagens.QtdeNumerosCpf);
