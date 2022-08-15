@@ -1,5 +1,6 @@
 ﻿using _4_Recursos;
 using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 
 namespace Dominio.Validacao
 {
@@ -19,6 +20,16 @@ namespace Dominio.Validacao
             {
                 return new ValidationResult(Mensagens.PrimeiraLetraMaiuscula);
             }
+
+            var nome = value.ToString();
+
+            Regex validarCaracterEspecial = new Regex(@"^[a-zA-Z\s]+$");
+
+            if (!validarCaracterEspecial.IsMatch(nome))
+            {
+                return new ValidationResult("Nome não pode conter caracter especial.");
+            }
+            
             return ValidationResult.Success;
         }
     }
