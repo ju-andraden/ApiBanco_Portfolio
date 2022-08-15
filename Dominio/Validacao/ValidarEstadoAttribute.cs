@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using _4_Recursos;
+using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
 namespace Dominio.Validacao
@@ -14,7 +15,7 @@ namespace Dominio.Validacao
 
             if (!validarEstado.IsMatch(estado))
             {
-                return new ValidationResult("O Estado informado está incorreto.");
+                return new ValidationResult(Mensagens.EstadoInvalido);
             }
 
             return ValidationResult.Success;

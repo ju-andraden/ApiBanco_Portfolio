@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using _4_Recursos;
+using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
 namespace Dominio.Validacao
@@ -14,7 +15,7 @@ namespace Dominio.Validacao
 
             if (!validarNumeroConta.IsMatch(numeroConta))
             {
-                return new ValidationResult("Formato de número de conta inválido.");
+                return new ValidationResult(Mensagens.FormatoNumeroConta);
             }
             return ValidationResult.Success;
         }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using _4_Recursos;
+using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
 namespace Dominio.Validacao
@@ -14,7 +15,7 @@ namespace Dominio.Validacao
 
             if (!validarTelefone.IsMatch(telefone))
             {
-                return new ValidationResult("Formato de telefone informado inválido.");
+                return new ValidationResult(Mensagens.FormatoTelefone);
             }
 
             return ValidationResult.Success;

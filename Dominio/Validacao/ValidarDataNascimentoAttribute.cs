@@ -32,7 +32,7 @@ namespace Dominio.Validacao
 
             if (!validarData.IsMatch(data))
             {
-                return new ValidationResult("Data de nascimento no formato inválido.");
+                return new ValidationResult(Mensagens.FormatoDataNascimento);
             }
 
             if (DateTime.Parse(data) > DateTime.Now)

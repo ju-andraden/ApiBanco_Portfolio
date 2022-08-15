@@ -40,7 +40,7 @@ namespace Dominio.Validacao
 
             if (!validarCpf.IsMatch(cpf))
             {
-                return new ValidationResult("CPF no formato incorreto.");
+                return new ValidationResult(Mensagens.FormatoCpf);
             }
 
             return ValidationResult.Success;

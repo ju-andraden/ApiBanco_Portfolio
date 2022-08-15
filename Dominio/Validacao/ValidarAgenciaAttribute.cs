@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using _4_Recursos;
+using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
 namespace Dominio.Validacao
@@ -14,7 +15,7 @@ namespace Dominio.Validacao
 
             if (!validarAgencia.IsMatch(agencia))
             {
-                return new ValidationResult("Formato de agência inválido.");
+                return new ValidationResult(Mensagens.FormatoAgencia);
             }
             return ValidationResult.Success;
         }

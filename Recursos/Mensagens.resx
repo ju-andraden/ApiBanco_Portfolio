@@ -118,7 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CampoNuloOuVazio" xml:space="preserve">
-    <value>Campo não pode ter dados nulo ou vazio.</value>
+    <value>Campo não pode ser nulo ou vazio.</value>
+  </data>
+  <data name="CaractereEspecialNome" xml:space="preserve">
+    <value>Nome não pode conter caractere especial.</value>
   </data>
   <data name="CepNuloOuVazio" xml:space="preserve">
     <value>CEP não pode ser nulo ou vazio.</value>
@@ -141,9 +144,6 @@
   <data name="CpfNulo" xml:space="preserve">
     <value>Cpf não pode ser nulo.</value>
   </data>
-  <data name="DataInvalida" xml:space="preserve">
-    <value>Formato de data inválido.</value>
-  </data>
   <data name="DataMaiorQueAtual" xml:space="preserve">
     <value>Data informada não pode ser maior que a data atual.</value>
   </data>
@@ -155,6 +155,27 @@
   </data>
   <data name="DocRealizado" xml:space="preserve">
     <value>Doc realizado.</value>
+  </data>
+  <data name="EstadoInvalido" xml:space="preserve">
+    <value>Estado no formato incorreto.</value>
+  </data>
+  <data name="FormatoAgencia" xml:space="preserve">
+    <value>Agência no formato incorreto.</value>
+  </data>
+  <data name="FormatoCep" xml:space="preserve">
+    <value>CEP no formato incorreto.</value>
+  </data>
+  <data name="FormatoCpf" xml:space="preserve">
+    <value>CPF no formato incorreto.</value>
+  </data>
+  <data name="FormatoDataNascimento" xml:space="preserve">
+    <value>Data de nascimento no formato inválido.</value>
+  </data>
+  <data name="FormatoNumeroConta" xml:space="preserve">
+    <value>Número de conta no formato inválido.</value>
+  </data>
+  <data name="FormatoTelefone" xml:space="preserve">
+    <value>Telefone no formato inválido.</value>
   </data>
   <data name="LogradouroNuloOuVazio" xml:space="preserve">
     <value>Logradouro não pode ser nulo ou vazio.</value>
@@ -205,6 +226,6 @@
     <value>Transação não encontrada.</value>
   </data>
   <data name="ValorMaiorQueZero" xml:space="preserve">
-    <value>É permitido somente valores maior que zero.</value>
+    <value>É permitido somente valores maiores que zero.</value>
   </data>
 </root>

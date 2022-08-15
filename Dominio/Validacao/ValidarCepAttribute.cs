@@ -30,7 +30,7 @@ namespace Dominio.Validacao
 
             if (!validarCep.IsMatch(cep))
             {
-                return new ValidationResult("Formato de CEP inválido.");
+                return new ValidationResult(Mensagens.FormatoCep);
             }
 
             return ValidationResult.Success;

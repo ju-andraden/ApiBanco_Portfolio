@@ -27,7 +27,7 @@ namespace Dominio.Validacao
 
             if (!validarCaracterEspecial.IsMatch(nome))
             {
-                return new ValidationResult("Nome não pode conter caracter especial.");
+                return new ValidationResult(Mensagens.CaractereEspecialNome);
             }
             
             return ValidationResult.Success;

@@ -61,11 +61,20 @@ namespace _4_Recursos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Campo não pode ter dados nulo ou vazio..
+        ///   Looks up a localized string similar to Campo não pode ser nulo ou vazio..
         /// </summary>
         public static string CampoNuloOuVazio {
             get {
                 return ResourceManager.GetString("CampoNuloOuVazio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nome não pode conter caractere especial..
+        /// </summary>
+        public static string CaractereEspecialNome {
+            get {
+                return ResourceManager.GetString("CaractereEspecialNome", resourceCulture);
             }
         }
         
@@ -133,15 +142,6 @@ namespace _4_Recursos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Formato de data inválido..
-        /// </summary>
-        public static string DataInvalida {
-            get {
-                return ResourceManager.GetString("DataInvalida", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Data informada não pode ser maior que a data atual..
         /// </summary>
         public static string DataMaiorQueAtual {
@@ -174,6 +174,69 @@ namespace _4_Recursos {
         public static string DocRealizado {
             get {
                 return ResourceManager.GetString("DocRealizado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estado no formato incorreto..
+        /// </summary>
+        public static string EstadoInvalido {
+            get {
+                return ResourceManager.GetString("EstadoInvalido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Agência no formato incorreto..
+        /// </summary>
+        public static string FormatoAgencia {
+            get {
+                return ResourceManager.GetString("FormatoAgencia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CEP no formato incorreto..
+        /// </summary>
+        public static string FormatoCep {
+            get {
+                return ResourceManager.GetString("FormatoCep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CPF no formato incorreto..
+        /// </summary>
+        public static string FormatoCpf {
+            get {
+                return ResourceManager.GetString("FormatoCpf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data de nascimento no formato inválido..
+        /// </summary>
+        public static string FormatoDataNascimento {
+            get {
+                return ResourceManager.GetString("FormatoDataNascimento", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Número de conta no formato inválido..
+        /// </summary>
+        public static string FormatoNumeroConta {
+            get {
+                return ResourceManager.GetString("FormatoNumeroConta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Telefone no formato inválido..
+        /// </summary>
+        public static string FormatoTelefone {
+            get {
+                return ResourceManager.GetString("FormatoTelefone", resourceCulture);
             }
         }
         
@@ -322,7 +385,7 @@ namespace _4_Recursos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to É permitido somente valores maior que zero..
+        ///   Looks up a localized string similar to É permitido somente valores maiores que zero..
         /// </summary>
         public static string ValorMaiorQueZero {
             get {
