@@ -16,29 +16,35 @@ namespace Dominio.Validacao
 
             var data = value.ToString();
 
-            if (data.Length != 10)
+            /*if (data.Length != 10)
             {
-                return new ValidationResult("Quantidade de caracteres diferente de 10.");
+                return new ValidationResult(Mensagens.QtdeCaracteresDifNome);
             }
 
             if (!ValidaPosicaoCaracter(data, 4, '-') || !ValidaPosicaoCaracter(data, 7, '-'))
             {
-                return new ValidationResult("Hífen na posição inválida");
-            }
+                return new ValidationResult(Mensagens.PosicaoHifen);
+            }*/
 
+            //Regex - expressão regular: facilita a validação de uma cadeia de valores
+            //Cadeia de valores: N formas de validações em uma linha
             Regex validarData = new Regex(@"^\d{4}-\d{2}-\d{2}$");
 
             if (!validarData.IsMatch(data))
             {
-                return new ValidationResult("Formato de data inválido.");
+                return new ValidationResult("Data de nascimento no formato inválido.");
             }
 
+            if (DateTime.Parse(data) > DateTime.Now)
+            {
+                return new ValidationResult(Mensagens.DataMaiorQueAtual);
+            }
             return ValidationResult.Success;
         }
 
-        public bool ValidaPosicaoCaracter(string data, int posicao, char c)
+        /*public bool ValidaPosicaoCaracter(string data, int posicao, char c)
         {
             return data[posicao] == c;
-        }
+        }*/
     }
 }

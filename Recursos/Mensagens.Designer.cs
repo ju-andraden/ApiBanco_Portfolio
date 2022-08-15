@@ -61,6 +61,24 @@ namespace _4_Recursos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Campo não pode ter dados nulo ou vazio..
+        /// </summary>
+        public static string CampoNuloOuVazio {
+            get {
+                return ResourceManager.GetString("CampoNuloOuVazio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CEP não pode ser nulo ou vazio..
+        /// </summary>
+        public static string CepNuloOuVazio {
+            get {
+                return ResourceManager.GetString("CepNuloOuVazio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cliente possui cadastro..
         /// </summary>
         public static string ClienteExiste {
@@ -106,11 +124,29 @@ namespace _4_Recursos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cpf não pode ser nulo ou vazio..
+        ///   Looks up a localized string similar to Cpf não pode ser nulo..
         /// </summary>
-        public static string CpfNuloOuVazio {
+        public static string CpfNulo {
             get {
-                return ResourceManager.GetString("CpfNuloOuVazio", resourceCulture);
+                return ResourceManager.GetString("CpfNulo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Formato de data inválido..
+        /// </summary>
+        public static string DataInvalida {
+            get {
+                return ResourceManager.GetString("DataInvalida", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data informada não pode ser maior que a data atual..
+        /// </summary>
+        public static string DataMaiorQueAtual {
+            get {
+                return ResourceManager.GetString("DataMaiorQueAtual", resourceCulture);
             }
         }
         
@@ -138,6 +174,15 @@ namespace _4_Recursos {
         public static string DocRealizado {
             get {
                 return ResourceManager.GetString("DocRealizado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logradouro não pode ser nulo ou vazio..
+        /// </summary>
+        public static string LogradouroNuloOuVazio {
+            get {
+                return ResourceManager.GetString("LogradouroNuloOuVazio", resourceCulture);
             }
         }
         
@@ -189,9 +234,18 @@ namespace _4_Recursos {
         /// <summary>
         ///   Looks up a localized string similar to Quantidade de caracteres diferente de 14..
         /// </summary>
-        public static string QtdeCaracteresDif {
+        public static string QtdeCaracteresDifCpf {
             get {
-                return ResourceManager.GetString("QtdeCaracteresDif", resourceCulture);
+                return ResourceManager.GetString("QtdeCaracteresDifCpf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quantidade de caracteres diferente de 10..
+        /// </summary>
+        public static string QtdeCaracteresDifNome {
+            get {
+                return ResourceManager.GetString("QtdeCaracteresDifNome", resourceCulture);
             }
         }
         

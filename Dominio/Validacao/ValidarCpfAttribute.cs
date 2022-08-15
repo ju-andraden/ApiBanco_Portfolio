@@ -1,5 +1,6 @@
 ﻿using _4_Recursos;
 using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 
 namespace Dominio.Validacao
 {
@@ -8,16 +9,16 @@ namespace Dominio.Validacao
         protected override ValidationResult? IsValid(object? value, 
             ValidationContext validationContext)
         {
-            if (value == null || string.IsNullOrEmpty(value.ToString()))
+            if (value == null)
             {
-                return new ValidationResult(Mensagens.CpfNuloOuVazio);
+                return new ValidationResult(Mensagens.CpfNulo);
             }
 
             var cpf = value.ToString();
 
-            if (cpf.Length != 14)
+            /*if (cpf.Length != 14)
             {
-                return new ValidationResult(Mensagens.QtdeCaracteresDif);
+                return new ValidationResult(Mensagens.QtdeCaracteresDifCpf);
             }
 
             if (!ValidaPosicaoCaracter(cpf, 3, '.') || !ValidaPosicaoCaracter(cpf, 7, '.'))
@@ -33,13 +34,21 @@ namespace Dominio.Validacao
             if (cpf.Where(c => char.IsNumber(c)).Count() != 11)
             {
                 return new ValidationResult(Mensagens.QtdeNumerosCpf);
+            }*/
+
+            Regex validarCpf = new Regex(@"^\d{3}\.\d{3}\.\d{3}-\d{2}$");
+
+            if (!validarCpf.IsMatch(cpf))
+            {
+                return new ValidationResult("CPF no formato incorreto.");
             }
+
             return ValidationResult.Success;
         }
 
-        private bool ValidaPosicaoCaracter(string cpf, int posicao, char c)
+        /*private bool ValidaPosicaoCaracter(string cpf, int posicao, char c)
         {
             return cpf[posicao] == c;
-        }
+        }*/
     }
 }

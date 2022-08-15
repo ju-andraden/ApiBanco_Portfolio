@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CampoNuloOuVazio" xml:space="preserve">
+    <value>Campo não pode ter dados nulo ou vazio.</value>
+  </data>
+  <data name="CepNuloOuVazio" xml:space="preserve">
+    <value>CEP não pode ser nulo ou vazio.</value>
+  </data>
   <data name="ClienteExiste" xml:space="preserve">
     <value>Cliente possui cadastro.</value>
   </data>
@@ -132,8 +138,14 @@
   <data name="ContaNaoEncontrada" xml:space="preserve">
     <value>Conta não encontrada.</value>
   </data>
-  <data name="CpfNuloOuVazio" xml:space="preserve">
-    <value>Cpf não pode ser nulo ou vazio.</value>
+  <data name="CpfNulo" xml:space="preserve">
+    <value>Cpf não pode ser nulo.</value>
+  </data>
+  <data name="DataInvalida" xml:space="preserve">
+    <value>Formato de data inválido.</value>
+  </data>
+  <data name="DataMaiorQueAtual" xml:space="preserve">
+    <value>Data informada não pode ser maior que a data atual.</value>
   </data>
   <data name="DataNascimentoNulaOuVazia" xml:space="preserve">
     <value>Data de nascimento não pode ser nula ou vazia.</value>
@@ -143,6 +155,9 @@
   </data>
   <data name="DocRealizado" xml:space="preserve">
     <value>Doc realizado.</value>
+  </data>
+  <data name="LogradouroNuloOuVazio" xml:space="preserve">
+    <value>Logradouro não pode ser nulo ou vazio.</value>
   </data>
   <data name="NomeNuloOuVazio" xml:space="preserve">
     <value>Nome não pode ser nulo ou vazio.</value>
@@ -159,8 +174,11 @@
   <data name="PrimeiraLetraMaiuscula" xml:space="preserve">
     <value>A primeira letra do nome deve ser maiúscula.</value>
   </data>
-  <data name="QtdeCaracteresDif" xml:space="preserve">
+  <data name="QtdeCaracteresDifCpf" xml:space="preserve">
     <value>Quantidade de caracteres diferente de 14.</value>
+  </data>
+  <data name="QtdeCaracteresDifNome" xml:space="preserve">
+    <value>Quantidade de caracteres diferente de 10.</value>
   </data>
   <data name="QtdeNumerosCpf" xml:space="preserve">
     <value>O CPF deve ter 11 números.</value>

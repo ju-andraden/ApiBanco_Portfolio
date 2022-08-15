@@ -11,6 +11,7 @@ namespace Dominio.Dto
         public string? DataNascimento { get; set; }
 
         [ValidarCpf]
+        [ValidarNuloOuVazio]
         public string? Cpf { get; set; }
         public string? Telefone { get; set; }
         public EnderecoDto Endereco { get; set; }
