@@ -6,12 +6,14 @@ namespace Dominio.Validacao
 {
     public class ValidarNomeAttribute : ValidationAttribute
     {
+        private const string validacaoCaractere = @"^[a-zA-Z\s]+$";
         protected override ValidationResult? IsValid(object value,
             ValidationContext validationContext)
         {
-            if (value == null || string.IsNullOrEmpty(value.ToString())) 
+
+            if (value == null || string.IsNullOrEmpty(value.ToString()))
             {
-                return new ValidationResult(Mensagens.NomeNuloOuVazio);
+                return new ValidationResult(Mensagens.CampoNuloOuVazio);
             }
 
             var primeiraLetra = value.ToString()[0].ToString();
@@ -21,15 +23,10 @@ namespace Dominio.Validacao
                 return new ValidationResult(Mensagens.PrimeiraLetraMaiuscula);
             }
 
-            var nome = value.ToString();
-
-            Regex validarCaracterEspecial = new Regex(@"^[a-zA-Z\s]+$");
-
-            if (!validarCaracterEspecial.IsMatch(nome))
+            if (!new Regex(validacaoCaractere).IsMatch(value.ToString()))
             {
                 return new ValidationResult(Mensagens.CaractereEspecialNome);
             }
-            
             return ValidationResult.Success;
         }
     }

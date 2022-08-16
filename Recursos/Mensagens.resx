@@ -180,6 +180,9 @@
   <data name="LogradouroNuloOuVazio" xml:space="preserve">
     <value>Logradouro não pode ser nulo ou vazio.</value>
   </data>
+  <data name="MenorDeIdade" xml:space="preserve">
+    <value>Menor de 18 anos.</value>
+  </data>
   <data name="NomeNuloOuVazio" xml:space="preserve">
     <value>Nome não pode ser nulo ou vazio.</value>
   </data>

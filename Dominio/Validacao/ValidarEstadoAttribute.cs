@@ -6,14 +6,11 @@ namespace Dominio.Validacao
 {
     public class ValidarEstadoAttribute : ValidationAttribute
     {
+        private const string validandoEstado = @"^(?i)(\s*(AC|AL|AP|AM|BA|CE|DF|ES|GO|MA|MT|MS|MG|PA|PB|PR|PE|PI|RJ|RN|RS|RO|RR|SC|SP|SE|TO)?)$";
         protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
 
-            var estado = value.ToString();
-
-            Regex validarEstado = new Regex(@"^(?i)(\s*(AC|AL|AP|AM|BA|CE|DF|ES|GO|MA|MT|MS|MG|PA|PB|PR|PE|PI|RJ|RN|RS|RO|RR|SC|SP|SE|TO)?)$");
-
-            if (!validarEstado.IsMatch(estado))
+            if (!new Regex(validandoEstado).IsMatch(value.ToString()))
             {
                 return new ValidationResult(Mensagens.EstadoInvalido);
             }

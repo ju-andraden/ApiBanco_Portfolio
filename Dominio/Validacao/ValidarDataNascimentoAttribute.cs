@@ -6,6 +6,8 @@ namespace Dominio.Validacao
 {
     public class ValidarDataNascimentoAttribute : ValidationAttribute
     {
+        private const int menorIdade = -18;
+        private const string validandoData = @"^\d{4}-\d{2}-\d{2}$";
         protected override ValidationResult? IsValid(object? value,
             ValidationContext validationContext)
         {
@@ -14,37 +16,23 @@ namespace Dominio.Validacao
                 return new ValidationResult(Mensagens.DataNascimentoNulaOuVazia);
             }
 
-            var data = value.ToString();
-
-            /*if (data.Length != 10)
-            {
-                return new ValidationResult(Mensagens.QtdeCaracteresDifNome);
-            }
-
-            if (!ValidaPosicaoCaracter(data, 4, '-') || !ValidaPosicaoCaracter(data, 7, '-'))
-            {
-                return new ValidationResult(Mensagens.PosicaoHifen);
-            }*/
-
-            //Regex - expressão regular: facilita a validação de uma cadeia de valores
-            //Cadeia de valores: N formas de validações em uma linha
-            Regex validarData = new Regex(@"^\d{4}-\d{2}-\d{2}$");
-
-            if (!validarData.IsMatch(data))
+            if (!new Regex(validandoData).IsMatch(value.ToString()))
             {
                 return new ValidationResult(Mensagens.FormatoDataNascimento);
             }
 
-            if (DateTime.Parse(data) > DateTime.Now)
+            if (DateTime.Parse(value.ToString()) > DateTime.Now)
             {
                 return new ValidationResult(Mensagens.DataMaiorQueAtual);
             }
+
+            DateTime dataMenos18Anos = DateTime.Parse(value.ToString());
+
+            if (dataMenos18Anos > DateTime.Now.AddYears(menorIdade))
+            {
+                return new ValidationResult(Mensagens.MenorDeIdade);
+            }
             return ValidationResult.Success;
         }
-
-        /*public bool ValidaPosicaoCaracter(string data, int posicao, char c)
-        {
-            return data[posicao] == c;
-        }*/
     }
 }

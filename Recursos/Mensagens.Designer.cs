@@ -250,6 +250,15 @@ namespace _4_Recursos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Menor de 18 anos..
+        /// </summary>
+        public static string MenorDeIdade {
+            get {
+                return ResourceManager.GetString("MenorDeIdade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nome não pode ser nulo ou vazio..
         /// </summary>
         public static string NomeNuloOuVazio {

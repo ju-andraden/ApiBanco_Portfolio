@@ -130,7 +130,7 @@ namespace Aplicacao.Services
 
             if (atualizarClienteDto.DataNascimento != null)
             {
-                cliente.DataNascimento = atualizarClienteDto.DataNascimento;
+                cliente.DataNascimento = DateTime.Parse(atualizarClienteDto.DataNascimento);
             }
 
             if (atualizarClienteDto.Telefone != null)
@@ -141,11 +141,11 @@ namespace Aplicacao.Services
             cliente.Endereco = new Endereco();
             cliente.Endereco.Id = cliente.EnderecoId;
 
-            cliente.Endereco.Logradouro = atualizarClienteDto.Endereco.Logradouro;
+            cliente.Endereco.Logradouro = atualizarClienteDto.Endereco.Logradouro.ToUpper();
             cliente.Endereco.Numero = atualizarClienteDto.Endereco.Numero;
             cliente.Endereco.Cep = atualizarClienteDto.Endereco.Cep;
-            cliente.Endereco.Cidade = atualizarClienteDto.Endereco.Cidade;
-            cliente.Endereco.Estado = atualizarClienteDto.Endereco.Estado;
+            cliente.Endereco.Cidade = atualizarClienteDto.Endereco.Cidade.ToUpper();
+            cliente.Endereco.Estado = atualizarClienteDto.Endereco.Estado.ToUpper();
         }
     }
 }

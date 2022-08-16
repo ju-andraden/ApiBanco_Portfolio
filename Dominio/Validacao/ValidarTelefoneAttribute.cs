@@ -6,18 +6,20 @@ namespace Dominio.Validacao
 {
     public class ValidarTelefoneAttribute : ValidationAttribute
     {
-        protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
+        private const string validandoTelefone = @"([0-9]{2}\))([0-9]{4,5})-([0-9]{4})$";
+        protected override ValidationResult? IsValid(object? value, 
+            ValidationContext validationContext)
         {
 
-            var telefone = value.ToString();
-
-            Regex validarTelefone = new Regex(@"([0-9]{2}\))([0-9]{4,5})-([0-9]{4})$");
-
-            if (!validarTelefone.IsMatch(telefone))
+            if (value == null || string.IsNullOrEmpty(value.ToString()))
+            {
+                return new ValidationResult(Mensagens.CampoNuloOuVazio);
+            }
+            
+            if (!new Regex(validandoTelefone).IsMatch(value.ToString()))
             {
                 return new ValidationResult(Mensagens.FormatoTelefone);
             }
-
             return ValidationResult.Success;
         }
     }
