@@ -6,6 +6,7 @@ namespace Dominio.Validacao
 {
     public class ValidarCepAttribute : ValidationAttribute
     {
+        private const string validandoCep = @"^\d{5}-\d{3}$";
         protected override ValidationResult? IsValid(object value,
             ValidationContext validationContext)
         {
@@ -14,31 +15,11 @@ namespace Dominio.Validacao
                 return new ValidationResult(Mensagens.CepNuloOuVazio);
             }
 
-            var cep = value.ToString();
-
-            /*if (cep.Length != 9)
-            {
-                return new ValidationResult("Quantidade de caracteres diferente de 9.");
-            }
-
-            if (!ValidaPosicaoCaracter(cep, 5, '-'))
-            {
-                return new ValidationResult(Mensagens.PosicaoHifen);
-            }*/
-
-            Regex validarCep = new Regex(@"^\d{5}-\d{3}$");
-
-            if (!validarCep.IsMatch(cep))
+            if (!new Regex(validandoCep).IsMatch(value.ToString()))
             {
                 return new ValidationResult(Mensagens.FormatoCep);
             }
-
             return ValidationResult.Success;
         }
-
-        /*public bool ValidaPosicaoCaracter(string data, int posicao, char c)
-        {
-            return data[posicao] == c;
-        }*/
     }
 }
