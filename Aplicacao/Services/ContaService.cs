@@ -69,7 +69,7 @@ namespace Aplicacao.Services
             return listaContas;
         }
 
-        public async Task<Conta> Atualizar(string numeroConta, Conta novosDados)
+        public async Task<Conta> Atualizar(string numeroConta, AtualizarContaDto novosDados)
         {
             var conta = await BuscarContaPeloNumero(numeroConta);
 

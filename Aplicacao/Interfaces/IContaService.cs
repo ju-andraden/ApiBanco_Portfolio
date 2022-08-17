@@ -9,7 +9,7 @@ namespace Aplicacao.Interfaces
         public Task<Conta> Ler(string numero);
         public Task<List<Conta>> Ler();
         public Task<List<Conta>> Ler(Guid id);
-        public Task<Conta> Atualizar(string numeroConta, Conta novosDados);
+        public Task<Conta> Atualizar(string numeroConta, AtualizarContaDto novosDados);
         public Task<string> Deletar(string numero);
     }
 }

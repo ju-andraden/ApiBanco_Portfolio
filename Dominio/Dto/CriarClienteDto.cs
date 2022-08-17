@@ -1,5 +1,4 @@
 ﻿using Dominio.Validacao;
-using System.ComponentModel.DataAnnotations;
 
 namespace Dominio.Dto
 {
