@@ -6,11 +6,9 @@ namespace Dominio.Dto
     {
         public Guid ClienteId { get; set; }
 
-        [ValidarNuloOuVazio]
         [ValidarNumeroConta]
         public string? Numero { get; set; }
 
-        [ValidarNuloOuVazio]
         [ValidarAgencia]
         public string? Agencia { get; set; }
     }

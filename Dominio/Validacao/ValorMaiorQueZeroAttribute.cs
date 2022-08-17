@@ -14,7 +14,6 @@ namespace Dominio.Validacao
             {
                 return ValidationResult.Success;
             }
-
             return new ValidationResult(Mensagens.ValorMaiorQueZero);
         }
     }

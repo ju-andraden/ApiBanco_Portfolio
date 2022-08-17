@@ -30,7 +30,6 @@ namespace Apresentacao.Controllers
                 }
                 return Created($"/{criarContaDto.ClienteId}", contaCriada);
             }
-
             catch (Exception excecao)
             {
                 return BadRequest(Mensagens.ContaExistente);

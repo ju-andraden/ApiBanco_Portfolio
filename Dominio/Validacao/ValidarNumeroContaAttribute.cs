@@ -6,14 +6,17 @@ namespace Dominio.Validacao
 {
     public class ValidarNumeroContaAttribute : ValidationAttribute
     {
-        protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
+        private const string validandoNumeroConta = @"^\d{5}-\d{1}$";
+        protected override ValidationResult? IsValid(object? value, 
+            ValidationContext validationContext)
         {
 
-            var numeroConta = value.ToString();
+            if (value == null || string.IsNullOrEmpty(value.ToString()))
+            {
+                return new ValidationResult(Mensagens.CampoNuloOuVazio);
+            }
 
-            Regex validarNumeroConta = new Regex(@"^\d{5}-\d{1}$");
-
-            if (!validarNumeroConta.IsMatch(numeroConta))
+            if (!new Regex(validandoNumeroConta).IsMatch(value.ToString()))
             {
                 return new ValidationResult(Mensagens.FormatoNumeroConta);
             }

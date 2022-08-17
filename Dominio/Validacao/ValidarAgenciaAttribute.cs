@@ -6,14 +6,16 @@ namespace Dominio.Validacao
 {
     public class ValidarAgenciaAttribute : ValidationAttribute
     {
+        private const string validandoAgencia = @"^\d{4}$";
         protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
 
-            var agencia = value.ToString();
+            if (value == null || string.IsNullOrEmpty(value.ToString()))
+            {
+                return new ValidationResult(Mensagens.CampoNuloOuVazio);
+            }
 
-            Regex validarAgencia = new Regex(@"^\d{4}$");
-
-            if (!validarAgencia.IsMatch(agencia))
+            if (!new Regex(validandoAgencia).IsMatch(value.ToString()))
             {
                 return new ValidationResult(Mensagens.FormatoAgencia);
             }
