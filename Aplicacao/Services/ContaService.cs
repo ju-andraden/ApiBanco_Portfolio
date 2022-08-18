@@ -34,7 +34,7 @@ namespace Aplicacao.Services
 
             Conta conta = new Conta();
             conta.ClienteId = criarContaDto.ClienteId;
-            conta.Numero = criarContaDto.Numero;
+            conta.Numero = criarContaDto.NumeroConta;
             conta.Agencia = criarContaDto.Agencia;
 
             await _context.Contas.AddAsync(conta);
@@ -69,7 +69,7 @@ namespace Aplicacao.Services
             return listaContas;
         }
 
-        public async Task<Conta> Atualizar(string numeroConta, AtualizarContaDto novosDados)
+        public async Task<Conta> AtualizarConta(string numeroConta, AtualizarContaDto atualizarContaDto)
         {
             var conta = await BuscarContaPeloNumero(numeroConta);
 
@@ -78,8 +78,7 @@ namespace Aplicacao.Services
                 return null;
             }
 
-            conta.Agencia = novosDados.Agencia;
-            conta.Numero = novosDados.Numero;
+            AtualizarContaSemDadosNulos(conta, atualizarContaDto);
 
             _context.Entry(conta).State = EntityState.Modified;
             await _context.SaveChangesAsync();
@@ -123,6 +122,19 @@ namespace Aplicacao.Services
                 return false;
             }
             return true;
+        }
+
+        private void AtualizarContaSemDadosNulos(Conta conta, AtualizarContaDto atualizarContaDto)
+        {
+            if (atualizarContaDto.NumeroConta != null)
+            {
+                conta.Numero = atualizarContaDto.NumeroConta;
+            }
+
+            if (atualizarContaDto.Agencia != null)
+            {
+                conta.Agencia = atualizarContaDto.Agencia;
+            }
         }
     }
 }

@@ -45,9 +45,9 @@ namespace Apresentacao.Controllers
         }
 
         [HttpGet("BuscarContaPeloNumero")]
-        public async Task<IActionResult> Leia(string numero)
+        public async Task<IActionResult> Leia(string numeroConta)
         {
-            var resultado = await _contaService.Ler(numero);
+            var resultado = await _contaService.Ler(numeroConta);
 
             if (resultado is null)
             {
@@ -57,10 +57,11 @@ namespace Apresentacao.Controllers
         }
 
         [HttpPut("AtualizarConta")]
-        public async Task<IActionResult> Atualizado(string numeroConta, [FromBody] AtualizarContaDto novosDados)
+        public async Task<IActionResult> Atualizado(string numeroConta, 
+            [FromBody] AtualizarContaDto atualizarContaDto)
         {
-            var atualizandoConta = await _contaService.Atualizar(numeroConta, 
-                novosDados);
+            var atualizandoConta = await _contaService.AtualizarConta(numeroConta, 
+                atualizarContaDto);
 
             if (atualizandoConta is null)
             {
@@ -70,9 +71,9 @@ namespace Apresentacao.Controllers
         }
 
         [HttpDelete("DeletarConta")]
-        public async Task<IActionResult> Deletando(string numero)
+        public async Task<IActionResult> Deletando(string numeroConta)
         {
-            var resultado = await _contaService.Deletar(numero);
+            var resultado = await _contaService.Deletar(numeroConta);
 
             if (resultado is null)
             {

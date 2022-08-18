@@ -1,4 +1,5 @@
 ﻿using Dominio.Validacao;
+using System.ComponentModel.DataAnnotations;
 
 namespace Dominio.Dto
 {
@@ -6,9 +7,11 @@ namespace Dominio.Dto
     {
         public Guid ClienteId { get; set; }
 
+        [Required(ErrorMessage = "O campo Número Conta deve estar preenchido.")]
         [ValidarNumeroConta]
-        public string? Numero { get; set; }
+        public string? NumeroConta { get; set; }
 
+        [Required(ErrorMessage = "O campo Agência deve estar preenchido.")]
         [ValidarAgencia]
         public string? Agencia { get; set; }
     }

@@ -141,9 +141,6 @@
   <data name="ContaNaoEncontrada" xml:space="preserve">
     <value>Conta não encontrada.</value>
   </data>
-  <data name="CpfNulo" xml:space="preserve">
-    <value>Cpf não pode ser nulo.</value>
-  </data>
   <data name="DataMaiorQueAtual" xml:space="preserve">
     <value>Data informada não pode ser maior que a data atual.</value>
   </data>
@@ -182,9 +179,6 @@
   </data>
   <data name="MenorDeIdade" xml:space="preserve">
     <value>Menor de 18 anos.</value>
-  </data>
-  <data name="NomeNuloOuVazio" xml:space="preserve">
-    <value>Nome não pode ser nulo ou vazio.</value>
   </data>
   <data name="PixRealizado" xml:space="preserve">
     <value>Pix realizado.</value>

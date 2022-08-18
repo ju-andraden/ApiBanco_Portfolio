@@ -5,7 +5,7 @@ namespace Dominio.Dto
     public class AtualizarContaDto
     {
         [ValidarNumeroConta]
-        public string? Numero { get; set; }
+        public string? NumeroConta { get; set; }
 
         [ValidarAgencia]
         public string? Agencia { get; set; }

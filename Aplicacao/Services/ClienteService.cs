@@ -24,7 +24,7 @@ namespace Aplicacao.Services
         public async Task<Cliente> CriarCliente(CriarClienteDto criarClienteDto)
         {
             Cliente cliente = new Cliente();
-            cliente.Nome = criarClienteDto.Nome;
+            cliente.Nome = criarClienteDto.Nome.ToUpper();
             cliente.DataNascimento = DateTime.Parse(criarClienteDto.DataNascimento);
             cliente.Cpf = criarClienteDto.Cpf;
             cliente.Telefone = criarClienteDto.Telefone;
@@ -125,7 +125,7 @@ namespace Aplicacao.Services
         {
             if (atualizarClienteDto.Nome != null)
             {
-                cliente.Nome = atualizarClienteDto.Nome;
+                cliente.Nome = atualizarClienteDto.Nome.ToUpper();
             }
 
             if (atualizarClienteDto.DataNascimento != null)

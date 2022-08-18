@@ -133,15 +133,6 @@ namespace _4_Recursos {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cpf não pode ser nulo..
-        /// </summary>
-        public static string CpfNulo {
-            get {
-                return ResourceManager.GetString("CpfNulo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Data informada não pode ser maior que a data atual..
         /// </summary>
         public static string DataMaiorQueAtual {
@@ -255,15 +246,6 @@ namespace _4_Recursos {
         public static string MenorDeIdade {
             get {
                 return ResourceManager.GetString("MenorDeIdade", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nome não pode ser nulo ou vazio..
-        /// </summary>
-        public static string NomeNuloOuVazio {
-            get {
-                return ResourceManager.GetString("NomeNuloOuVazio", resourceCulture);
             }
         }
         

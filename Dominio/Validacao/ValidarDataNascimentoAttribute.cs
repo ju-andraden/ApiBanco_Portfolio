@@ -11,26 +11,25 @@ namespace Dominio.Validacao
         protected override ValidationResult? IsValid(object? value,
             ValidationContext validationContext)
         {
-            if (value == null || string.IsNullOrEmpty(value.ToString()))
-            {
-                return new ValidationResult(Mensagens.DataNascimentoNulaOuVazia);
-            }
 
-            if (!new Regex(validandoData).IsMatch(value.ToString()))
+            if (value != null)
             {
-                return new ValidationResult(Mensagens.FormatoDataNascimento);
-            }
+                if (!new Regex(validandoData).IsMatch(value.ToString()))
+                {
+                    return new ValidationResult(Mensagens.FormatoDataNascimento);
+                }
 
-            if (DateTime.Parse(value.ToString()) > DateTime.Now)
-            {
-                return new ValidationResult(Mensagens.DataMaiorQueAtual);
-            }
+                if (DateTime.Parse(value.ToString()) > DateTime.Now)
+                {
+                    return new ValidationResult(Mensagens.DataMaiorQueAtual);
+                }
 
-            DateTime dataMenos18Anos = DateTime.Parse(value.ToString());
+                DateTime dataMenos18Anos = DateTime.Parse(value.ToString());
 
-            if (dataMenos18Anos > DateTime.Now.AddYears(menorIdade))
-            {
-                return new ValidationResult(Mensagens.MenorDeIdade);
+                if (dataMenos18Anos > DateTime.Now.AddYears(menorIdade))
+                {
+                    return new ValidationResult(Mensagens.MenorDeIdade);
+                }
             }
             return ValidationResult.Success;
         }

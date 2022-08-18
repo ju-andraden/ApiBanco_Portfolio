@@ -11,21 +11,19 @@ namespace Dominio.Validacao
             ValidationContext validationContext)
         {
 
-            if (value == null || string.IsNullOrEmpty(value.ToString()))
+            if (value != null)
             {
-                return new ValidationResult(Mensagens.CampoNuloOuVazio);
-            }
+                var primeiraLetra = value.ToString()[0].ToString();
 
-            var primeiraLetra = value.ToString()[0].ToString();
+                if (primeiraLetra != primeiraLetra.ToUpper())
+                {
+                    return new ValidationResult(Mensagens.PrimeiraLetraMaiuscula);
+                }
 
-            if (primeiraLetra != primeiraLetra.ToUpper())
-            {
-                return new ValidationResult(Mensagens.PrimeiraLetraMaiuscula);
-            }
-
-            if (!new Regex(validacaoCaractere).IsMatch(value.ToString()))
-            {
-                return new ValidationResult(Mensagens.CaractereEspecialNome);
+                if (!new Regex(validacaoCaractere).IsMatch(value.ToString()))
+                {
+                    return new ValidationResult(Mensagens.CaractereEspecialNome);
+                }
             }
             return ValidationResult.Success;
         }
