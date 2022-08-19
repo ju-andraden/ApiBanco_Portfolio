@@ -1,7 +1,6 @@
 ﻿using _4_Recursos;
 using Aplicacao.Interfaces;
 using Dominio.Dto;
-using Dominio.Entidade;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Apresentacao.Controllers
@@ -57,10 +56,10 @@ namespace Apresentacao.Controllers
         }
 
         [HttpPut("AtualizarConta")]
-        public async Task<IActionResult> Atualizado(string numeroConta, 
+        public async Task<IActionResult> Atualizado(string numeroConta,
             [FromBody] AtualizarContaDto atualizarContaDto)
         {
-            var atualizandoConta = await _contaService.AtualizarConta(numeroConta, 
+            var atualizandoConta = await _contaService.AtualizarConta(numeroConta,
                 atualizarContaDto);
 
             if (atualizandoConta is null)

@@ -10,14 +10,12 @@ namespace Dominio.Validacao
         protected override ValidationResult? IsValid(object value,
             ValidationContext validationContext)
         {
-            if (value == null || string.IsNullOrEmpty(value.ToString()))
+            if (value != null)
             {
-                return new ValidationResult(Mensagens.CepNuloOuVazio);
-            }
-
-            if (!new Regex(validandoCep).IsMatch(value.ToString()))
-            {
-                return new ValidationResult(Mensagens.FormatoCep);
+                if (!new Regex(validandoCep).IsMatch(value.ToString()))
+                {
+                    return new ValidationResult(Mensagens.FormatoCep);
+                }
             }
             return ValidationResult.Success;
         }

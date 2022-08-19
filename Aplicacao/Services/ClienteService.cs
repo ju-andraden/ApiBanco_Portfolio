@@ -13,7 +13,7 @@ namespace Aplicacao.Services
         private readonly IContaService _contaService;
         private readonly ITransacaoService _transacaoService;
 
-        public ClienteService(ApiDbContext context, IContaService contaService, 
+        public ClienteService(ApiDbContext context, IContaService contaService,
             ITransacaoService transacaoService)
         {
             _context = context;
@@ -63,7 +63,7 @@ namespace Aplicacao.Services
             return clienteEncontrado;
         }
 
-        public async Task<Cliente> AtualizarCliente(string cpf, AtualizarClienteDto 
+        public async Task<Cliente> AtualizarCliente(string cpf, AtualizarClienteDto
             atualizarClienteDto)
         {
             var cliente = await BuscarClientePeloCpf(cpf);
@@ -103,7 +103,7 @@ namespace Aplicacao.Services
 
         private async Task<Cliente> BuscarClientePeloCpf(string cpf)
         {
-            var cliente = await _context.Clientes.FirstOrDefaultAsync(cliente 
+            var cliente = await _context.Clientes.FirstOrDefaultAsync(cliente
                 => cliente.Cpf.Equals(cpf));
 
             if (cliente != null)
@@ -112,7 +112,7 @@ namespace Aplicacao.Services
 
                 foreach (Conta conta in cliente.Contas)
                 {
-                    conta.Transacoes = await _transacaoService.LerTransacoes(conta.Id, 
+                    conta.Transacoes = await _transacaoService.LerTransacoes(conta.Id,
                         DateTime.MinValue, DateTime.MinValue);
                 }
             }
@@ -120,7 +120,7 @@ namespace Aplicacao.Services
             return cliente;
         }
 
-        private void AtualizarClienteSemDadosNulos(Cliente cliente, AtualizarClienteDto 
+        private void AtualizarClienteSemDadosNulos(Cliente cliente, AtualizarClienteDto
             atualizarClienteDto)
         {
             if (atualizarClienteDto.Nome != null)
@@ -138,14 +138,39 @@ namespace Aplicacao.Services
                 cliente.Telefone = atualizarClienteDto.Telefone;
             }
 
+            //verificar se funciona sem as linhas 142 e 143, testar novamente o código
             cliente.Endereco = new Endereco();
             cliente.Endereco.Id = cliente.EnderecoId;
 
-            cliente.Endereco.Logradouro = atualizarClienteDto.Endereco.Logradouro.ToUpper();
-            cliente.Endereco.Numero = atualizarClienteDto.Endereco.Numero;
-            cliente.Endereco.Cep = atualizarClienteDto.Endereco.Cep;
-            cliente.Endereco.Cidade = atualizarClienteDto.Endereco.Cidade.ToUpper();
-            cliente.Endereco.Estado = atualizarClienteDto.Endereco.Estado.ToUpper();
+            cliente.Endereco = _context.Enderecos.FirstOrDefault(e => e.Id == cliente.EnderecoId);
+
+            if (atualizarClienteDto.Endereco != null)
+            {
+                if (atualizarClienteDto.Endereco.Logradouro != null)
+                {
+                    cliente.Endereco.Logradouro = atualizarClienteDto.Endereco.Logradouro.ToUpper();
+                }
+
+                if (atualizarClienteDto.Endereco.Numero != null)
+                {
+                    cliente.Endereco.Numero = atualizarClienteDto.Endereco.Numero;
+                }
+
+                if (atualizarClienteDto.Endereco.Cep != null)
+                {
+                    cliente.Endereco.Cep = atualizarClienteDto.Endereco.Cep;
+                }
+
+                if (atualizarClienteDto.Endereco.Cidade != null)
+                {
+                    cliente.Endereco.Cidade = atualizarClienteDto.Endereco.Cidade.ToUpper();
+                }
+
+                if (atualizarClienteDto.Endereco.Estado != null)
+                {
+                    cliente.Endereco.Estado = atualizarClienteDto.Endereco.Estado.ToUpper();
+                }
+            }
         }
     }
 }

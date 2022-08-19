@@ -12,6 +12,6 @@ namespace Dominio.Dto
 
         [ValidarTelefone]
         public string? Telefone { get; set; }
-        public EnderecoDto Endereco { get; set; }
+        public AtualizarEnderecoDto Endereco { get; set; }
     }
 }
