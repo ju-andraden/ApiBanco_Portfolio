@@ -13,16 +13,20 @@ namespace Dominio.Validacao
 
             if (value != null)
             {
-                var primeiraLetra = value.ToString()[0].ToString();
 
-                if (primeiraLetra != primeiraLetra.ToUpper())
+                if (!string.IsNullOrEmpty(value.ToString()))
                 {
-                    return new ValidationResult(Mensagens.PrimeiraLetraMaiuscula);
-                }
+                    var primeiraLetra = value.ToString()[0].ToString();
 
-                if (!new Regex(validacaoCaractere).IsMatch(value.ToString()))
-                {
-                    return new ValidationResult(Mensagens.CaractereEspecialNome);
+                    if (primeiraLetra != primeiraLetra.ToUpper())
+                    {
+                        return new ValidationResult(Mensagens.PrimeiraLetraMaiuscula);
+                    }
+
+                    if (!new Regex(validacaoCaractere).IsMatch(value.ToString()))
+                    {
+                        return new ValidationResult(Mensagens.CaractereEspecialNome);
+                    }
                 }
             }
             return ValidationResult.Success;

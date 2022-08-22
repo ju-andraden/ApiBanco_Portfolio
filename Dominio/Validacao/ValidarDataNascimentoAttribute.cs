@@ -14,21 +14,24 @@ namespace Dominio.Validacao
 
             if (value != null)
             {
-                if (!new Regex(validandoData).IsMatch(value.ToString()))
+                if (!string.IsNullOrEmpty(value.ToString()))
                 {
-                    return new ValidationResult(Mensagens.FormatoDataNascimento);
-                }
+                    if (!new Regex(validandoData).IsMatch(value.ToString()))
+                    {
+                        return new ValidationResult(Mensagens.FormatoDataNascimento);
+                    }
 
-                if (DateTime.Parse(value.ToString()) > DateTime.Now)
-                {
-                    return new ValidationResult(Mensagens.DataMaiorQueAtual);
-                }
+                    if (DateTime.Parse(value.ToString()) > DateTime.Now)
+                    {
+                        return new ValidationResult(Mensagens.DataMaiorQueAtual);
+                    }
 
-                DateTime dataMenos18Anos = DateTime.Parse(value.ToString());
+                    DateTime dataMenos18Anos = DateTime.Parse(value.ToString());
 
-                if (dataMenos18Anos > DateTime.Now.AddYears(menorIdade))
-                {
-                    return new ValidationResult(Mensagens.MenorDeIdade);
+                    if (dataMenos18Anos > DateTime.Now.AddYears(menorIdade))
+                    {
+                        return new ValidationResult(Mensagens.MenorDeIdade);
+                    }
                 }
             }
             return ValidationResult.Success;

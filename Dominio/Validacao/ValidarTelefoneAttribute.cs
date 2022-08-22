@@ -13,9 +13,12 @@ namespace Dominio.Validacao
 
             if (value != null)
             {
-                if (!new Regex(validandoTelefone).IsMatch(value.ToString()))
+                if (!string.IsNullOrEmpty(value.ToString()))
                 {
-                    return new ValidationResult(Mensagens.FormatoTelefone);
+                    if (!new Regex(validandoTelefone).IsMatch(value.ToString()))
+                    {
+                        return new ValidationResult(Mensagens.FormatoTelefone);
+                    }
                 }
             }
             return ValidationResult.Success;
