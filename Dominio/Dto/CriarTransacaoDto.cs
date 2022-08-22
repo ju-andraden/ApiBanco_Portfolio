@@ -1,5 +1,6 @@
 ﻿using Dominio.Enum;
 using Dominio.Validacao;
+using System.ComponentModel.DataAnnotations;
 
 namespace Dominio.Dto
 {
@@ -7,8 +8,9 @@ namespace Dominio.Dto
     {
         public Guid ContaId { get; set; }
 
+        [Required(ErrorMessage = "Teste")]
         [ValorMaiorQueZero]
-        public decimal Valor { get; set; }
+        public Decimal? Valor { get; set; }
         public TipoTransacao TipoTransacao { get; set; }
     }
 }

@@ -6,8 +6,8 @@ namespace Dominio.Validacao
 {
     public class ValidarCepAttribute : ValidationAttribute
     {
-        private const string validandoCep = @"^\d{5}-\d{3}$";
-        protected override ValidationResult? IsValid(object value,
+        private const string validandoCep = @"^(?i)(\s*(\d{5}-\d{3})?)$";
+        protected override ValidationResult? IsValid(object? value,
             ValidationContext validationContext)
         {
             if (value != null)

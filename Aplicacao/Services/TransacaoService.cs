@@ -34,7 +34,7 @@ namespace Aplicacao.Services
             Transacao transacao = new Transacao();
             transacao.ContaId = criarTransacaoDto.ContaId;
             transacao.TipoTransacao = criarTransacaoDto.TipoTransacao.ToString();
-            transacao.Valor = decimal.Round(criarTransacaoDto.Valor, 2,
+            transacao.Valor = decimal.Round((decimal)criarTransacaoDto.Valor, 2,
                 MidpointRounding.AwayFromZero);
 
             transacao.DataHora = DateTime.Now;

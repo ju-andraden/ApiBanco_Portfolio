@@ -123,17 +123,17 @@ namespace Aplicacao.Services
         private void AtualizarClienteSemDadosNulos(Cliente cliente, AtualizarClienteDto
             atualizarClienteDto)
         {
-            if (atualizarClienteDto.Nome != null)
+            if (!string.IsNullOrEmpty(atualizarClienteDto.Nome))
             {
                 cliente.Nome = atualizarClienteDto.Nome.ToUpper();
             }
 
-            if (atualizarClienteDto.DataNascimento != null)
+            if (!string.IsNullOrEmpty(atualizarClienteDto.DataNascimento))
             {
                 cliente.DataNascimento = DateTime.Parse(atualizarClienteDto.DataNascimento);
             }
 
-            if (atualizarClienteDto.Telefone != null)
+            if (!string.IsNullOrEmpty(atualizarClienteDto.Telefone))
             {
                 cliente.Telefone = atualizarClienteDto.Telefone;
             }
@@ -146,27 +146,27 @@ namespace Aplicacao.Services
 
             if (atualizarClienteDto.Endereco != null)
             {
-                if (atualizarClienteDto.Endereco.Logradouro != null)
+                if (!string.IsNullOrEmpty(atualizarClienteDto.Endereco.Logradouro))
                 {
                     cliente.Endereco.Logradouro = atualizarClienteDto.Endereco.Logradouro.ToUpper();
                 }
 
-                if (atualizarClienteDto.Endereco.Numero != null)
+                if (!string.IsNullOrEmpty(atualizarClienteDto.Endereco.Numero))
                 {
                     cliente.Endereco.Numero = atualizarClienteDto.Endereco.Numero;
                 }
 
-                if (atualizarClienteDto.Endereco.Cep != null)
+                if (!string.IsNullOrEmpty(atualizarClienteDto.Endereco.Cep))
                 {
                     cliente.Endereco.Cep = atualizarClienteDto.Endereco.Cep;
                 }
 
-                if (atualizarClienteDto.Endereco.Cidade != null)
+                if (!string.IsNullOrEmpty(atualizarClienteDto.Endereco.Cidade))
                 {
                     cliente.Endereco.Cidade = atualizarClienteDto.Endereco.Cidade.ToUpper();
                 }
 
-                if (atualizarClienteDto.Endereco.Estado != null)
+                if (!string.IsNullOrEmpty(atualizarClienteDto.Endereco.Estado))
                 {
                     cliente.Endereco.Estado = atualizarClienteDto.Endereco.Estado.ToUpper();
                 }

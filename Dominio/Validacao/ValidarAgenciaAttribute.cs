@@ -6,7 +6,7 @@ namespace Dominio.Validacao
 {
     public class ValidarAgenciaAttribute : ValidationAttribute
     {
-        private const string validandoAgencia = @"^\d{4}$";
+        private const string validandoAgencia = @"^(?i)(\d*\d{4})?$";
         protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
 

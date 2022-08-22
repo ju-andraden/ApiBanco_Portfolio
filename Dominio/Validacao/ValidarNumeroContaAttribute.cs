@@ -6,7 +6,7 @@ namespace Dominio.Validacao
 {
     public class ValidarNumeroContaAttribute : ValidationAttribute
     {
-        private const string validandoNumeroConta = @"^\d{5}-\d{1}$";
+        private const string validandoNumeroConta = @"^(?i)(\d*\d{5}-\d{1})?$";
         protected override ValidationResult? IsValid(object? value,
             ValidationContext validationContext)
         {

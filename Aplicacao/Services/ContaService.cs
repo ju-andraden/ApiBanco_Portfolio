@@ -126,12 +126,12 @@ namespace Aplicacao.Services
 
         private void AtualizarContaSemDadosNulos(Conta conta, AtualizarContaDto atualizarContaDto)
         {
-            if (atualizarContaDto.NumeroConta != null)
+            if (!string.IsNullOrEmpty(atualizarContaDto.NumeroConta))
             {
                 conta.Numero = atualizarContaDto.NumeroConta;
             }
 
-            if (atualizarContaDto.Agencia != null)
+            if (!string.IsNullOrEmpty(atualizarContaDto.Agencia))
             {
                 conta.Agencia = atualizarContaDto.Agencia;
             }
