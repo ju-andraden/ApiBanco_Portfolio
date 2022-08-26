@@ -250,6 +250,15 @@ namespace _4_Recursos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nome não pode conter números..
+        /// </summary>
+        public static string NumeroNoNome {
+            get {
+                return ResourceManager.GetString("NumeroNoNome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pix realizado..
         /// </summary>
         public static string PixRealizado {

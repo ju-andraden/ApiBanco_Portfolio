@@ -8,9 +8,9 @@ namespace Dominio.Dto
     {
         public Guid ContaId { get; set; }
 
-        [Required(ErrorMessage = "Teste")]
+        [Required(ErrorMessage = "O campo Valor deve estar preenchido.")]
         [ValorMaiorQueZero]
-        public Decimal? Valor { get; set; }
+        public decimal? Valor { get; set; }
         public TipoTransacao TipoTransacao { get; set; }
     }
 }
