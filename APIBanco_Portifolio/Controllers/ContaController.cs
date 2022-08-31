@@ -36,7 +36,7 @@ namespace Apresentacao.Controllers
         }
 
         [HttpGet("BuscarTodasAsContas")]
-        public async Task<IActionResult> Leia()
+        public async Task<IActionResult> LeiaContas()
         {
             var resultado = await _contaService.Ler();
 
