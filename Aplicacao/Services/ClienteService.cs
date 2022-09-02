@@ -138,7 +138,6 @@ namespace Aplicacao.Services
                 cliente.Telefone = atualizarClienteDto.Telefone;
             }
 
-            //verificar se funciona sem as linhas 142 e 143, testar novamente o código
             cliente.Endereco = new Endereco();
             cliente.Endereco.Id = cliente.EnderecoId;
 
