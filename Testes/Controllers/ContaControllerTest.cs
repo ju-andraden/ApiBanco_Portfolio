@@ -25,10 +25,10 @@ namespace Testes.Controllers
         public async Task CriadoReturnUnauthorized()
         {
             //configurar
-            var conta = InstanciarUmaContaDto();
+            var criarContaDto = InstanciarUmaContaDto();
 
             //executar
-            var response = (UnauthorizedObjectResult)await _contaController.Criado(conta);
+            var response = (UnauthorizedObjectResult)await _contaController.Criado(criarContaDto);
 
             //validar
             Assert.NotNull(response);
@@ -76,10 +76,11 @@ namespace Testes.Controllers
         }
 
         [Fact]
-        public async Task LeiaTodasAsContasOk()
+        public async Task LeiaTodasAsContasReturnOk()
         {
             //configurar
             var listarContas = ListarContas();
+
             _contaService.Ler().Returns(listarContas);
 
             //executar
@@ -154,6 +155,7 @@ namespace Testes.Controllers
             var atualizarContaDto = AtualizarUmaContaDto();
             var contaAtualizada = InstanciarUmaConta();
             string conta = "12345-6";
+            
             _contaService.AtualizarConta(conta, atualizarContaDto).Returns(contaAtualizada);
 
             //executar
@@ -171,6 +173,7 @@ namespace Testes.Controllers
         {
             //configurar
             string conta = "";
+
             _contaService.Deletar(conta).ReturnsNull();
 
             //executar
@@ -188,6 +191,7 @@ namespace Testes.Controllers
         {
             //configurar
             string conta = "12345-6";
+
             _contaService.Deletar(conta).Returns(Mensagens.RemoverConta);
 
             //executar
@@ -222,22 +226,23 @@ namespace Testes.Controllers
 
         private List<Conta> ListarContas()
         {
-            List<Conta> contaList = new List<Conta>();
-
-            Conta conta1 = new Conta();
-            conta1.ClienteId = Guid.Parse("08da8b5c-f701-40b5-8e23-c5b4eed40c74");
-            conta1.Numero = "12345-6";
-            conta1.Agencia = "1234";
-
-            Conta conta2 = new Conta();
-            conta2.ClienteId = Guid.Parse("08da8b5c-f701-40b5-8e23-c5b4eed40c74");
-            conta2.Numero = "12345-6";
-            conta2.Agencia = "1234";
-
-            contaList.Add(conta1);
-            contaList.Add(conta2);
-
-            return contaList;
+            return new List<Conta>()
+            {
+                new Conta()
+                {
+                    Id = Guid.NewGuid(),
+                    Agencia = "1234",
+                    Transacoes = new List<Transacao>()
+                    {
+                        new Transacao()
+                        {
+                            Id= Guid.NewGuid()
+                        }
+                    },
+                    Numero = "789-0",
+                    ClienteId = Guid.NewGuid()
+                }
+            };
         }
 
         private AtualizarContaDto AtualizarUmaContaDto()
