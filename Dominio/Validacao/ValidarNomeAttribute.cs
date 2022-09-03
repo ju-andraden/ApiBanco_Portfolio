@@ -8,15 +8,10 @@ namespace Dominio.Validacao
     {
         private const string validacaoNumero = @"\d";
 
-        //melhorar o ReGex para não aceitar nenhum caractere especial
         private const string validacaoCaractere = @"[0-9&_.\-@]";
         protected override ValidationResult? IsValid(object value,
             ValidationContext validationContext)
         {
-
-            //if (value != null)
-
-
             if (!string.IsNullOrEmpty((string)value))
             {
                 var primeiraLetra = value.ToString()[0].ToString();
