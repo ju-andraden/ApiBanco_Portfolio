@@ -133,6 +133,15 @@ namespace _4_Recursos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O CPF informado está inválido..
+        /// </summary>
+        public static string CpfInvalido {
+            get {
+                return ResourceManager.GetString("CpfInvalido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Data de nascimento informada inválida..
         /// </summary>
         public static string DataInvalida {

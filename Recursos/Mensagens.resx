@@ -141,6 +141,9 @@
   <data name="ContaNaoEncontrada" xml:space="preserve">
     <value>Conta não encontrada.</value>
   </data>
+  <data name="CpfInvalido" xml:space="preserve">
+    <value>O CPF informado está inválido.</value>
+  </data>
   <data name="DataInvalida" xml:space="preserve">
     <value>Data de nascimento informada inválida.</value>
   </data>

@@ -17,9 +17,9 @@ namespace Dominio.Validacao
                     return new ValidationResult(Mensagens.FormatoCpf);
                 }
 
-                if (IsCpf(value.ToString()))
+                if (!IsCpf(value.ToString()))
                 {
-                    return new ValidationResult("Teste");
+                    return new ValidationResult(Mensagens.CpfInvalido);
                 }
             }
             return ValidationResult.Success;
