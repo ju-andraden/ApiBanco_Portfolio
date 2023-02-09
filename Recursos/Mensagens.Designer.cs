@@ -133,6 +133,15 @@ namespace _4_Recursos {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Data de nascimento informada inválida..
+        /// </summary>
+        public static string DataInvalida {
+            get {
+                return ResourceManager.GetString("DataInvalida", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Data informada não pode ser maior que a data atual..
         /// </summary>
         public static string DataMaiorQueAtual {

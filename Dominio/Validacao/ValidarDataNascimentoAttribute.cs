@@ -21,9 +21,16 @@ namespace Dominio.Validacao
                         return new ValidationResult(Mensagens.FormatoDataNascimento);
                     }
 
-                    if (DateTime.Parse(value.ToString()) > DateTime.Now)
+                    try
                     {
-                        return new ValidationResult(Mensagens.DataMaiorQueAtual);
+                        if (DateTime.Parse(value.ToString()) > DateTime.Now)
+                        {
+                            return new ValidationResult(Mensagens.DataMaiorQueAtual);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        return new ValidationResult(Mensagens.DataInvalida);
                     }
 
                     DateTime dataMenos18Anos = DateTime.Parse(value.ToString());

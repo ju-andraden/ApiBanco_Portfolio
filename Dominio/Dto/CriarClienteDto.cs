@@ -20,6 +20,8 @@ namespace Dominio.Dto
         [Required(ErrorMessage = "O campo Telefone deve estar preenchido.")]
         [ValidarTelefone]
         public string? Telefone { get; set; }
+
+        [Required(ErrorMessage = "O campo Endereço deve estar preenchido.")]
         public EnderecoDto Endereco { get; set; }
     }
 }

@@ -141,6 +141,9 @@
   <data name="ContaNaoEncontrada" xml:space="preserve">
     <value>Conta não encontrada.</value>
   </data>
+  <data name="DataInvalida" xml:space="preserve">
+    <value>Data de nascimento informada inválida.</value>
+  </data>
   <data name="DataMaiorQueAtual" xml:space="preserve">
     <value>Data informada não pode ser maior que a data atual.</value>
   </data>
