@@ -12,7 +12,7 @@ namespace Testes.Validacao
         [InlineData("123.@56.789-10", false)]
         [InlineData("123456.789-10", false)]
         [InlineData("", false)]
-        [InlineData("123.456.789-10", true)]
+        [InlineData("868.346.228-53", true)]
         [InlineData(null, true)]
         public void IsValid(string value, bool result)
         {
